@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/logo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ACCORDIAN</title>
+    <meta name="title" content="Java Script Basics Practice" />
+    <meta
+      name="description"
+      content="Java Script Basics Practice Like Counter, Event Listeners, Calculator"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://custom-tabs-daebf.web.app/" />
+    <meta property="og:title" content="Java Script Basics Practice" />
+    <meta
+      property="og:description"
+      content="Java Script Basics Practice Like Counter, Event Listeners, Calculator"
+    />
+    <meta property="og:image" content="/logo.png" />
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://custom-tabs-daebf.web.app/" />
+    <meta property="twitter:title" content="Java Script Basics Practice" />
+    <meta
+      property="twitter:description"
+      content="Java Script Basics Practice Like Counter, Event Listeners, Calculator"
+    />
+    <meta property="twitter:image" content="/logo.png" />
+  </head>
+  <body>
+    <div class="h-screen">
+      <div
+        class="bg-white flex justify-between items-center shadow-lg sm:px-5 px-3 py-4 sticky top-0 left-0 z-50"
+      >
+        <h2
+          class="font-medium sm:text-3xl text-xl font-mono text-center uppercase"
+        >
+          sidebar
+        </h2>
+        <button
+          id="sidebar"
+          class="text-white font-medium px-6 py-2 rounded-xl bg-blue-700"
+        >
+          open sidebar
+        </button>
+        <div
+          id="overlay"
+          class="w-full h-full bg-black bg-opacity-70 transistion-all duration-300 opacity-0 pointer-events-none fixed left-0 top-0"
+        ></div>
+        <div
+          id="side_links"
+          class="bg-blue-700 py-4 px-2 z-40 rounded-r-xl transistion-all duration-300 fixed w-[300px] top-0 -right-[100%] h-full"
+        >
+          <div class="flex justify-between items-center mb-2 px-4">
+            <a
+              href="/"
+              onclick="RemoveSidebar()"
+              class="text-decoration-none text-2xl font-mono font-medium uppercase text-white mb-0 cursor-pointer"
+            >
+              JS-PRACTICE
+            </a>
+            <div
+              id="close"
+              class="cursor-pointer bg-blue-700 rounded-xl text-2xl text-white"
+            >
+              &#10006;
+            </div>
+          </div>
+          <div class="flex flex-col h-[calc(100vh-50px)] overflow-y-auto">
+            <a
+              onclick="RemoveSidebar()"
+              class="text-decoration-none hover:bg-white hover:text-black px-4 py-2 transition-all duration-300 rounded-lg text-xl font-mono font-medium uppercase text-white"
+              href="/select"
+              >select</a
+            >
+            <a
+              onclick="RemoveSidebar()"
+              class="text-decoration-none hover:bg-white hover:text-black px-4 py-2 transition-all duration-300 rounded-lg text-xl font-mono font-medium uppercase text-white"
+              href="/counter"
+              >counter</a
+            >
+            <a
+              onclick="RemoveSidebar()"
+              class="text-decoration-none hover:bg-white hover:text-black px-4 py-2 transition-all duration-300 rounded-lg text-xl font-mono font-medium uppercase text-white"
+              href="/savevalue"
+              >save value</a
+            >
+            <a
+              onclick="RemoveSidebar()"
+              class="text-decoration-none hover:bg-white hover:text-black px-4 py-2 transition-all duration-300 rounded-lg text-xl font-mono font-medium uppercase text-white"
+              href="/calculator"
+              >simple calculator</a
+            >
+            <a
+              onclick="RemoveSidebar()"
+              class="text-decoration-none hover:bg-white hover:text-black px-4 py-2 transition-all duration-300 rounded-lg text-xl font-mono font-medium uppercase text-white"
+              href="/advancedcalculator"
+              >advanced calculator</a
+            >
+            <a
+              onclick="RemoveSidebar()"
+              class="text-decoration-none hover:bg-white hover:text-black px-4 py-2 transition-all duration-300 rounded-lg text-xl font-mono font-medium uppercase text-white"
+              href="/accordian"
+              >accordian</a
+            >
+            <a
+              onclick="RemoveSidebar()"
+              class="text-decoration-none hover:bg-white hover:text-black px-4 py-2 transition-all duration-300 rounded-lg text-xl font-mono font-medium uppercase text-white"
+              href="/tabs"
+              >tabs</a
+            >
+            <a
+              onclick="RemoveSidebar()"
+              class="text-decoration-none hover:bg-white hover:text-black px-4 py-2 transition-all duration-300 rounded-lg text-xl font-mono font-medium uppercase text-white"
+              href="/texteditor"
+              >text editer</a
+            >
+            <a
+              onclick="RemoveSidebar()"
+              class="text-decoration-none hover:bg-white hover:text-black px-4 py-2 transition-all duration-300 rounded-lg text-xl font-mono font-medium uppercase text-white"
+              href="/taskapp"
+              >task app</a
+            >
+          </div>
+        </div>
+      </div>
+      <div class="flex items-center justify-center">
+        <div
+          class="bg-white shadow-xl rounded-xl flex justify-center items-center flex-col gap-5 sm:p-10 p-6 min-w-[375px] max-w-[400px] w-full"
+        >
+          <h2 class="font-medium text-3xl font-mono text-center uppercase">
+            accordian
+          </h2>
+          <div class="mb-0 bg-blue-700 rounded-xl">
+            <div
+              id="accordianbutton"
+              class="flex items-center px-3 cursor-pointer"
+            >
+              <h2
+                class="font-medium text-xl font-mono py-2 bg-blue-700 text-white rounded-xl w-full"
+              >
+                Accordian Item 1
+              </h2>
+              <span
+                id="arrow"
+                class="text-2xl text-white font-bold rotate-[0deg]"
+                >^</span
+              >
+            </div>
+            <p
+              id="accordiancontent"
+              class="font-medium bg-blue-700 text-white rounded-b-xl text-sm font-mono px-3 py-2 max-h-[200px] overflow-hidden duration-300 transistion-all"
+            >
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cumque
+              odio quas dolores harum quos earum iusto.
+            </p>
+          </div>
+          <div class="mb-0 bg-blue-700 rounded-xl">
+            <div
+              id="accordianbutton2"
+              class="flex items-center px-3 cursor-pointer"
+            >
+              <h2
+                class="font-medium text-xl font-mono py-2 bg-blue-700 text-white rounded-xl w-full"
+              >
+                Accordian Item 2
+              </h2>
+              <span
+                id="arrow2"
+                class="text-2xl text-white font-bold rotate-[180deg]"
+                >^</span
+              >
+            </div>
+            <p
+              id="accordiancontent2"
+              class="font-medium bg-blue-700 text-white rounded-b-xl text-sm font-mono px-3 max-h-0 overflow-hidden duration-300 transistion-all"
+            >
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cumque
+              odio quas dolores harum quos earum iusto.
+            </p>
+          </div>
+          <div class="mb-0 bg-blue-700 rounded-xl">
+            <div
+              id="accordianbutton3"
+              class="flex items-center px-3 cursor-pointer"
+            >
+              <h2
+                class="font-medium text-xl font-mono py-2 bg-blue-700 text-white rounded-xl w-full"
+              >
+                Accordian Item 3
+              </h2>
+              <span
+                id="arrow3"
+                class="text-2xl text-white font-bold rotate-[180deg]"
+                >^</span
+              >
+            </div>
+            <p
+              id="accordiancontent3"
+              class="font-medium bg-blue-700 text-white rounded-b-xl text-sm font-mono px-3 max-h-0 overflow-hidden duration-300 transistion-all"
+            >
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cumque
+              odio quas dolores harum quos earum iusto.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="/main.js"></script>
+    <!-- ============== ACCORDIAN ========== -->
+    <script>
+      var accordianButton = document.getElementById("accordianbutton");
+      var accordianContent = document.getElementById("accordiancontent");
+      var accordianButton2 = document.getElementById("accordianbutton2");
+      var accordianContent2 = document.getElementById("accordiancontent2");
+      var accordianButton3 = document.getElementById("accordianbutton3");
+      var accordianContent3 = document.getElementById("accordiancontent3");
+      var arrow = document.getElementById("arrow");
+      accordianButton.addEventListener("click", function () {
+        accordianContent.classList.toggle("!max-h-[0px]");
+        accordianContent.classList.toggle("py-2");
+        accordianContent2.classList.remove("max-h-[200px]");
+        accordianContent2.classList.remove("py-2");
+        accordianContent3.classList.remove("max-h-[200px]");
+        accordianContent3.classList.remove("py-2");
+        arrow.classList.toggle("rotate-[180deg]");
+        arrow2.classList.add("rotate-[180deg]");
+      });
+      accordianButton2.addEventListener("click", function () {
+        accordianContent2.classList.toggle("max-h-[200px]");
+        accordianContent2.classList.toggle("py-2");
+        accordianContent.classList.add("max-h-[0px]");
+        accordianContent.classList.remove("py-2");
+        accordianContent3.classList.remove("max-h-[200px]");
+        accordianContent3.classList.remove("py-2");
+        arrow.classList.add("rotate-[180deg]");
+        arrow2.classList.toggle("rotate-[180deg]");
+        arrow3.classList.add("rotate-[180deg]");
+      });
+      accordianButton3.addEventListener("click", function () {
+        accordianContent3.classList.toggle("max-h-[200px]");
+        accordianContent3.classList.toggle("py-2");
+        accordianContent2.classList.remove("max-h-[200px]");
+        accordianContent2.classList.remove("py-2");
+        accordianContent.classList.add("max-h-[0px]");
+        accordianContent.classList.remove("py-2");
+        arrow.classList.add("rotate-[180deg]");
+        arrow2.classList.add("rotate-[180deg]");
+        arrow3.classList.toggle("rotate-[180deg]");
+      });
+    </script>
+  </body>
+</html>

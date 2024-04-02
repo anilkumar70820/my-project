@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* .task_check_mark:hover svg path {
+  fill: black;
+} */
+
+.delete {
+  text-decoration: line-through;
+}
+
+.check_green > svg path {
+  fill: green !important;
+}

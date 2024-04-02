@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/logo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ADVANCED-CALCULATOR</title>
+    <meta name="title" content="Java Script Basics Practice" />
+    <meta
+      name="description"
+      content="Java Script Basics Practice Like Counter, Event Listeners, Calculator"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://custom-tabs-daebf.web.app/" />
+    <meta property="og:title" content="Java Script Basics Practice" />
+    <meta
+      property="og:description"
+      content="Java Script Basics Practice Like Counter, Event Listeners, Calculator"
+    />
+    <meta property="og:image" content="/logo.png" />
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://custom-tabs-daebf.web.app/" />
+    <meta property="twitter:title" content="Java Script Basics Practice" />
+    <meta
+      property="twitter:description"
+      content="Java Script Basics Practice Like Counter, Event Listeners, Calculator"
+    />
+    <meta property="twitter:image" content="/logo.png" />
+  </head>
+  <body>
+    <div
+      class="bg-white flex justify-between items-center shadow-lg sm:px-5 px-3 py-4 sticky top-0 left-0 z-50"
+    >
+      <h2
+        class="font-medium sm:text-3xl text-xl font-mono text-center uppercase"
+      >
+        sidebar
+      </h2>
+      <button
+        id="sidebar"
+        class="text-white font-medium px-6 py-2 rounded-xl bg-blue-700"
+      >
+        open sidebar
+      </button>
+      <div
+        id="overlay"
+        class="w-full h-full bg-black bg-opacity-70 transistion-all duration-300 opacity-0 pointer-events-none fixed left-0 top-0"
+      ></div>
+      <div
+        id="side_links"
+        class="bg-blue-700 py-4 px-2 z-40 rounded-r-xl transistion-all duration-300 fixed w-[300px] top-0 -right-[100%] h-full"
+      >
+        <div class="flex justify-between items-center mb-2 px-4">
+          <a
+            href="/"
+            onclick="RemoveSidebar()"
+            class="text-decoration-none text-2xl font-mono font-medium uppercase text-white mb-0 cursor-pointer"
+          >
+            JS-PRACTICE
+          </a>
+          <div
+            id="close"
+            class="cursor-pointer bg-blue-700 rounded-xl text-2xl text-white"
+          >
+            &#10006;
+          </div>
+        </div>
+        <div class="flex flex-col h-[calc(100vh-50px)] overflow-y-auto">
+          <a
+            onclick="RemoveSidebar()"
+            class="text-decoration-none hover:bg-white hover:text-black px-4 py-2 transition-all duration-300 rounded-lg text-xl font-mono font-medium uppercase text-white"
+            href="/select"
+            >select</a
+          >
+          <a
+            onclick="RemoveSidebar()"
+            class="text-decoration-none hover:bg-white hover:text-black px-4 py-2 transition-all duration-300 rounded-lg text-xl font-mono font-medium uppercase text-white"
+            href="/counter"
+            >counter</a
+          >
+          <a
+            onclick="RemoveSidebar()"
+            class="text-decoration-none hover:bg-white hover:text-black px-4 py-2 transition-all duration-300 rounded-lg text-xl font-mono font-medium uppercase text-white"
+            href="/savevalue"
+            >save value</a
+          >
+          <a
+            onclick="RemoveSidebar()"
+            class="text-decoration-none hover:bg-white hover:text-black px-4 py-2 transition-all duration-300 rounded-lg text-xl font-mono font-medium uppercase text-white"
+            href="/calculator"
+            >simple calculator</a
+          >
+          <a
+            onclick="RemoveSidebar()"
+            class="text-decoration-none hover:bg-white hover:text-black px-4 py-2 transition-all duration-300 rounded-lg text-xl font-mono font-medium uppercase text-white"
+            href="/advancedcalculator"
+            >advanced calculator</a
+          >
+          <a
+            onclick="RemoveSidebar()"
+            class="text-decoration-none hover:bg-white hover:text-black px-4 py-2 transition-all duration-300 rounded-lg text-xl font-mono font-medium uppercase text-white"
+            href="/accordian"
+            >accordian</a
+          >
+          <a
+            onclick="RemoveSidebar()"
+            class="text-decoration-none hover:bg-white hover:text-black px-4 py-2 transition-all duration-300 rounded-lg text-xl font-mono font-medium uppercase text-white"
+            href="/tabs"
+            >tabs</a
+          >
+          <a
+            onclick="RemoveSidebar()"
+            class="text-decoration-none hover:bg-white hover:text-black px-4 py-2 transition-all duration-300 rounded-lg text-xl font-mono font-medium uppercase text-white"
+            href="/texteditor"
+            >text editer</a
+          >
+          <a
+            onclick="RemoveSidebar()"
+            class="text-decoration-none hover:bg-white hover:text-black px-4 py-2 transition-all duration-300 rounded-lg text-xl font-mono font-medium uppercase text-white"
+            href="/taskapp"
+            >task app</a
+          >
+        </div>
+      </div>
+    </div>
+    <div class="flex items-center justify-center">
+      <div
+        class="bg-white shadow-xl rounded-xl flex justify-center items-center flex-col gap-5 sm:p-10 p-5"
+      >
+        <h2
+          class="font-medium text-3xl font-mono text-center max-w-[300px] uppercase"
+        >
+          advanced calculator
+        </h2>
+        <div class="grid grid-cols-4 w-full sm:gap-2 gap-1">
+          <div class="col-span-3">
+            <p
+              id="calculate"
+              class="w-full h-full bg-transparent outline-none border-2 border-solid border-blue-700 rounded-xl px-3 py-3 text-3xl"
+            ></p>
+          </div>
+          <div
+            id="clearresult"
+            class="p-3 cursor-pointer bg-blue-700 rounded-xl text-2xl text-white flex justify-center items-center"
+          >
+            &#10006;
+          </div>
+          <div
+            onclick="calculator(1)"
+            id="number1"
+            class="cursor-pointer sm:p-3 p-2 bg-blue-700 rounded-xl text-xl text-white flex justify-center items-center"
+          >
+            1
+          </div>
+          <div
+            onclick="calculator(2)"
+            id="number2"
+            class="cursor-pointer sm:p-3 p-2 bg-blue-700 rounded-xl text-xl text-white flex justify-center items-center"
+          >
+            2
+          </div>
+          <div
+            onclick="calculator(3)"
+            id="number3"
+            class="cursor-pointer sm:p-3 p-2 bg-blue-700 rounded-xl text-xl text-white flex justify-center items-center"
+          >
+            3
+          </div>
+          <div
+            onclick="calculator('+')"
+            id="addcalculate"
+            class="cursor-pointer sm:p-3 p-2 bg-blue-700 rounded-xl text-xl text-white flex justify-center items-center"
+          >
+            +
+          </div>
+          <div
+            onclick="calculator(4)"
+            id="number4"
+            class="cursor-pointer sm:p-3 p-2 bg-blue-700 rounded-xl text-xl text-white flex justify-center items-center"
+          >
+            4
+          </div>
+          <div
+            onclick="calculator(5)"
+            id="number5"
+            class="cursor-pointer sm:p-3 p-2 bg-blue-700 rounded-xl text-xl text-white flex justify-center items-center"
+          >
+            5
+          </div>
+          <div
+            onclick="calculator(6)"
+            id="number6"
+            class="cursor-pointer sm:p-3 p-2 bg-blue-700 rounded-xl text-xl text-white flex justify-center items-center"
+          >
+            6
+          </div>
+          <div
+            onclick="calculator('-')"
+            id="minuscalculate"
+            class="cursor-pointer sm:p-3 p-2 bg-blue-700 rounded-xl text-xl text-white flex justify-center items-center"
+          >
+            -
+          </div>
+          <div
+            onclick="calculator(7)"
+            id="number7"
+            class="cursor-pointer sm:p-3 p-2 bg-blue-700 rounded-xl text-xl text-white flex justify-center items-center"
+          >
+            7
+          </div>
+          <div
+            onclick="calculator(8)"
+            id="number8"
+            class="cursor-pointer sm:p-3 p-2 bg-blue-700 rounded-xl text-xl text-white flex justify-center items-center"
+          >
+            8
+          </div>
+          <div
+            onclick="calculator(9)"
+            id="number9"
+            class="cursor-pointer sm:p-3 p-2 bg-blue-700 rounded-xl text-xl text-white flex justify-center items-center"
+          >
+            9
+          </div>
+          <div
+            onclick="calculator('*')"
+            id="multiplycalculate"
+            class="cursor-pointer sm:p-3 p-2 bg-blue-700 rounded-xl text-xl text-white flex justify-center items-center"
+          >
+            *
+          </div>
+          <div
+            onclick="calculator('.')"
+            id="dot"
+            class="cursor-pointer sm:p-3 p-2 bg-blue-700 rounded-xl text-xl text-white flex justify-center items-center"
+          >
+            .
+          </div>
+          <div
+            onclick="calculator(0)"
+            id="number0"
+            class="cursor-pointer sm:p-3 p-2 bg-blue-700 rounded-xl text-xl text-white flex justify-center items-center"
+          >
+            0
+          </div>
+          <div
+            onclick="calculator('/')"
+            id="dividecalculate"
+            class="cursor-pointer sm:p-3 p-2 bg-blue-700 rounded-xl text-xl text-white flex justify-center items-center"
+          >
+            /
+          </div>
+          <div
+            id="equal"
+            class="cursor-pointer sm:p-3 p-2 bg-blue-700 rounded-xl text-xl text-white flex justify-center items-center"
+          >
+            =
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="/main.js"></script>
+    <script>
+      var calculate = document.getElementById("calculate");
+      // var addcalculate = document.getElementById("addcalculate");
+      // var minuscalculate = document.getElementById("minuscalculate");
+      // var multiplycalculate = document.getElementById("multiplycalculate");
+      // var dividecalculate = document.getElementById("dividecalculate");
+      var equal = document.getElementById("equal");
+      // var number1 = document.getElementById("number1");
+      // var number2 = document.getElementById("number2");
+      // var number3 = document.getElementById("number3");
+      // var number4 = document.getElementById("number4");
+      // var number5 = document.getElementById("number5");
+      // var number6 = document.getElementById("number6");
+      // var number7 = document.getElementById("number7");
+      // var number8 = document.getElementById("number8");
+      // var number9 = document.getElementById("number9");
+      // var number0 = document.getElementById("number0");
+      // var dot = document.getElementById("dot");
+      var clearresult = document.getElementById("clearresult");
+      function calculator(val) {
+        calculate.innerHTML += val;
+      }
+
+      // number1.addEventListener("click", function () {
+      //   calculate.innerHTML += number1.innerHTML.trim();
+      // });
+      // number2.addEventListener("click", function () {
+      //   calculate.innerHTML += number2.innerHTML.trim();
+      // });
+      // number3.addEventListener("click", function () {
+      //   calculate.innerHTML += number3.innerHTML.trim();
+      // });
+      // number4.addEventListener("click", function () {
+      //   calculate.innerHTML += number4.innerHTML.trim();
+      // });
+      // number5.addEventListener("click", function () {
+      //   calculate.innerHTML += number5.innerHTML.trim();
+      // });
+      // number6.addEventListener("click", function () {
+      //   calculate.innerHTML += number6.innerHTML.trim();
+      // });
+      // number7.addEventListener("click", function () {
+      //   calculate.innerHTML += number7.innerHTML.trim();
+      // });
+      // number8.addEventListener("click", function () {
+      //   calculate.innerHTML += number8.innerHTML.trim();
+      // });
+      // number9.addEventListener("click", function () {
+      //   calculate.innerHTML += number9.innerHTML.trim();
+      // });
+      // number0.addEventListener("click", function () {
+      //   calculate.innerHTML += number0.innerHTML.trim();
+      // });
+      // dot.addEventListener("click", function () {
+      //   calculate.innerHTML += dot.innerHTML.trim();
+      // });
+      // addcalculate.addEventListener("click", function () {
+      //   calculate.innerHTML += addcalculate.innerHTML.trim();
+      // });
+      // minuscalculate.addEventListener("click", function () {
+      //   calculate.innerHTML += minuscalculate.innerHTML.trim();
+      // });
+      // multiplycalculate.addEventListener("click", function () {
+      //   calculate.innerHTML += multiplycalculate.innerHTML.trim();
+      // });
+      // dividecalculate.addEventListener("click", function () {
+      //   calculate.innerHTML += dividecalculate.innerHTML.trim();
+      // });
+      equal.addEventListener("click", function () {
+        calculate.innerHTML = eval(calculate.innerHTML);
+      });
+      clearresult.addEventListener("click", function () {
+        calculate.innerHTML = "";
+      });
+    </script>
+  </body>
+</html>

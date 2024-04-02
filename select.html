@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/logo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SELECT</title>
+    <meta name="title" content="Java Script Basics Practice" />
+<meta name="description" content="Java Script Basics Practice Like Counter, Event Listeners, Calculator" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://custom-tabs-daebf.web.app/" />
+<meta property="og:title" content="Java Script Basics Practice" />
+<meta property="og:description" content="Java Script Basics Practice Like Counter, Event Listeners, Calculator" />
+<meta property="og:image" content="/logo.png" />
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content="https://custom-tabs-daebf.web.app/" />
+<meta property="twitter:title" content="Java Script Basics Practice" />
+<meta property="twitter:description" content="Java Script Basics Practice Like Counter, Event Listeners, Calculator" />
+<meta property="twitter:image" content="/logo.png" />
+  </head>
+  <body>
+    <div
+      class="bg-white flex justify-between items-center shadow-lg sm:px-5 px-3 py-4 sticky top-0 left-0 z-50"
+    >
+      <h2
+        class="font-medium sm:text-3xl text-xl font-mono text-center uppercase"
+      >
+        sidebar
+      </h2>
+      <button
+        id="sidebar"
+        class="text-white font-medium px-6 py-2 rounded-xl bg-blue-700"
+      >
+        open sidebar
+      </button>
+      <div
+        id="overlay"
+        class="w-full h-full bg-black bg-opacity-70 transistion-all duration-300 opacity-0 pointer-events-none fixed left-0 top-0"
+      ></div>
+      <div
+        id="side_links"
+        class="bg-blue-700 py-4 px-2 z-40 rounded-r-xl transistion-all duration-300 fixed w-[300px] top-0 -right-[100%] h-full"
+      >
+        <div class="flex justify-between items-center mb-2 px-4">
+          <a
+            href="/"
+            onclick="RemoveSidebar()"
+            class="text-decoration-none text-2xl font-mono font-medium uppercase text-white mb-0 cursor-pointer"
+          >
+            JS-PRACTICE
+          </a>
+          <div
+            id="close"
+            class="cursor-pointer bg-blue-700 rounded-xl text-2xl text-white"
+          >
+            &#10006;
+          </div>
+        </div>
+        <div class="flex flex-col h-[calc(100vh-50px)] overflow-y-auto">
+          <a
+            onclick="RemoveSidebar()"
+            class="text-decoration-none hover:bg-white hover:text-black px-4 py-2 transition-all duration-300 rounded-lg text-xl font-mono font-medium uppercase text-white"
+            href="/select"
+            >select</a
+          >
+          <a
+            onclick="RemoveSidebar()"
+            class="text-decoration-none hover:bg-white hover:text-black px-4 py-2 transition-all duration-300 rounded-lg text-xl font-mono font-medium uppercase text-white"
+            href="/counter"
+            >counter</a
+          >
+          <a
+            onclick="RemoveSidebar()"
+            class="text-decoration-none hover:bg-white hover:text-black px-4 py-2 transition-all duration-300 rounded-lg text-xl font-mono font-medium uppercase text-white"
+            href="/savevalue"
+            >save value</a
+          >
+          <a
+            onclick="RemoveSidebar()"
+            class="text-decoration-none hover:bg-white hover:text-black px-4 py-2 transition-all duration-300 rounded-lg text-xl font-mono font-medium uppercase text-white"
+            href="/calculator"
+            >simple calculator</a
+          >
+          <a
+            onclick="RemoveSidebar()"
+            class="text-decoration-none hover:bg-white hover:text-black px-4 py-2 transition-all duration-300 rounded-lg text-xl font-mono font-medium uppercase text-white"
+            href="/advancedcalculator"
+            >advanced calculator</a
+          >
+          <a
+            onclick="RemoveSidebar()"
+            class="text-decoration-none hover:bg-white hover:text-black px-4 py-2 transition-all duration-300 rounded-lg text-xl font-mono font-medium uppercase text-white"
+            href="/accordian"
+            >accordian</a
+          >
+          <a
+            onclick="RemoveSidebar()"
+            class="text-decoration-none hover:bg-white hover:text-black px-4 py-2 transition-all duration-300 rounded-lg text-xl font-mono font-medium uppercase text-white"
+            href="/tabs"
+            >tabs</a
+          >
+          <a
+            onclick="RemoveSidebar()"
+            class="text-decoration-none hover:bg-white hover:text-black px-4 py-2 transition-all duration-300 rounded-lg text-xl font-mono font-medium uppercase text-white"
+            href="/texteditor"
+            >text editer</a
+          >
+          <a
+            onclick="RemoveSidebar()"
+            class="text-decoration-none hover:bg-white hover:text-black px-4 py-2 transition-all duration-300 rounded-lg text-xl font-mono font-medium uppercase text-white"
+            href="/taskapp"
+            >task app</a
+          >
+        </div>
+      </div>
+    </div>
+    <div class="flex items-center justify-center">
+       <!-- ============== SELECT ============= -->
+       <div
+       class="bg-white shadow-xl rounded-xl flex justify-center items-center flex-col gap-5 p-10"
+     >
+       <h2
+         class="font-medium text-3xl font-mono text-center max-w-[300px] uppercase text-nowrap"
+       >
+         select without map
+       </h2>
+       <div class="w-full flex justify-center relative">
+         <div
+           id="selectBox"
+           class="flex items-center justify-between border-2 border-solid border-blue-700 rounded-xl max-w-[150px] w-full py-1 px-2 cursor-pointer"
+         >
+           <p id="selected" class="text-lg font-medium font-mono">Select</p>
+           <span id="selectarrow" class="text-xl font-bold rotate-[180deg]"
+             >^</span
+           >
+         </div>
+         <div
+           id="options"
+           class="absolute hidden shadow-xl top-[102%] border-2 border-solid bg-white border-blue-700 overflow-hidden rounded-xl max-w-[150px] w-full"
+         >
+           <p
+             onclick="selectValue('Red')"
+             class="text-lg font-medium font-mono py-1 ps-2 pe-10 hover:bg-blue-700 hover:text-white transistion-all duration-300"
+           >
+             Red
+           </p>
+           <p
+             onclick="selectValue('Green')"
+             class="text-lg font-medium font-mono py-1 ps-2 pe-10 hover:bg-blue-700 hover:text-white transistion-all duration-300"
+           >
+             Green
+           </p>
+           <p
+             onclick="selectValue('Yellow')"
+             class="text-lg font-medium font-mono py-1 ps-2 pe-10 hover:bg-blue-700 hover:text-white transistion-all duration-300"
+           >
+             Yellow
+           </p>
+           <p
+             onclick="selectValue('Pink')"
+             class="text-lg font-medium font-mono py-1 ps-2 pe-10 hover:bg-blue-700 hover:text-white transistion-all duration-300"
+           >
+             Pink
+           </p>
+           <p
+             onclick="selectValue('Black')"
+             class="text-lg font-medium font-mono py-1 ps-2 pe-10 hover:bg-blue-700 hover:text-white transistion-all duration-300"
+           >
+             Black
+           </p>
+         </div>
+       </div>
+     </div>
+     <!-- ================== SELECT MAP ============== -->
+     <div
+       class="bg-white shadow-xl rounded-xl flex justify-center items-center flex-col gap-5 p-10"
+     >
+       <h2
+         class="font-medium text-3xl font-mono text-center max-w-[300px] uppercase text-nowrap"
+       >
+         select with map
+       </h2>
+       <div class="w-full flex justify-center relative">
+         <div
+           id="mapselectBox"
+           class="flex items-center justify-between border-2 border-solid border-blue-700 rounded-xl max-w-[150px] w-full py-1 px-2 cursor-pointer"
+         >
+           <p id="mapselected" class="text-lg font-medium font-mono">Select</p>
+           <span id="mapselectarrow" class="text-xl font-bold rotate-[180deg]"
+             >^</span
+           >
+         </div>
+         <div
+           id="mapoptions"
+           class="absolute hidden shadow-xl top-[102%] border-2 border-solid bg-white border-blue-700 overflow-hidden rounded-xl max-w-[150px] w-full"
+         ></div>
+       </div>
+     </div>
+    </div>
+    <script type="module" src="/main.js"></script>
+    <!-- ============== SELECT ============ -->
+    <script>
+      var select = document.getElementById("selected");
+      var options = document.getElementById("options");
+      var selectbox = document.getElementById("selectBox");
+      var selectarrow = document.getElementById("selectarrow");
+      function selectValue(val) {
+        select.innerHTML = val;
+        select.style.color = "white";
+        selectbox.style.backgroundColor = val;
+        selectarrow.style.color = "white";
+        options.classList.add("hidden");
+        selectarrow.classList.toggle("rotate-[180deg]");
+      }
+      selectbox.addEventListener("click", function (event) {
+        event.stopPropagation();
+        options.classList.toggle("hidden");
+        selectarrow.classList.toggle("rotate-[180deg]");
+      });
+      document.addEventListener("click", function () {
+        if (!options.classList.contains("hidden")) {
+          options.classList.add("hidden");
+          selectarrow.classList.toggle("rotate-[180deg]");
+        }
+      });
+    </script>
+    <!-- ============= SELECT WITH MAP ======== -->
+    <script>
+      var mapselect = document.getElementById("mapselected");
+      var mapoptions = document.getElementById("mapoptions");
+      var mapselectbox = document.getElementById("mapselectBox");
+      var mapselectarrow = document.getElementById("mapselectarrow");
+      function mapoptionsvalue(val) {
+        mapselect.innerHTML = val;
+        mapselect.style.color = "white";
+        mapselectbox.style.backgroundColor = val;
+        mapselectarrow.style.color = "white";
+        mapoptions.classList.add("hidden");
+        mapselectarrow.classList.toggle("rotate-[180deg]");
+      }
+      const colors = [
+        "red",
+        "green",
+        "black",
+        "pink",
+        "yellow",
+        "blue",
+        "orange",
+      ];
+      mapoptions.innerHTML = colors
+        .map((obj) => {
+          return `<p onclick="mapoptionsvalue('${obj}')" class="text-lg font-medium font-mono py-1 ps-2 pe-10 hover:bg-blue-700 hover:text-white transistion-all duration-300">${obj}</p>`;
+        })
+        .join("");
+      mapselectbox.addEventListener("click", function (event) {
+        event.stopPropagation();
+        mapoptions.classList.toggle("hidden");
+        mapselectarrow.classList.toggle("rotate-[180deg]");
+      });
+      document.addEventListener("click", function () {
+        if (!mapoptions.classList.contains("hidden")) {
+          mapoptions.classList.add("hidden");
+          mapselectarrow.classList.toggle("rotate-[180deg]");
+        }
+      });
+    </script>
+  </body>
+</html>

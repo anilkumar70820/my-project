@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/logo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CALCULATOR</title>
+    <meta name="title" content="Java Script Basics Practice" />
+<meta name="description" content="Java Script Basics Practice Like Counter, Event Listeners, Calculator" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://custom-tabs-daebf.web.app/" />
+<meta property="og:title" content="Java Script Basics Practice" />
+<meta property="og:description" content="Java Script Basics Practice Like Counter, Event Listeners, Calculator" />
+<meta property="og:image" content="/logo.png" />
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content="https://custom-tabs-daebf.web.app/" />
+<meta property="twitter:title" content="Java Script Basics Practice" />
+<meta property="twitter:description" content="Java Script Basics Practice Like Counter, Event Listeners, Calculator" />
+<meta property="twitter:image" content="/logo.png" />
+  </head>
+  <body>
+    <div
+    class="bg-white flex justify-between items-center shadow-lg sm:px-5 px-3 py-4 sticky top-0 left-0 z-50"
+  >
+    <h2
+      class="font-medium sm:text-3xl text-xl font-mono text-center uppercase"
+    >
+      sidebar
+    </h2>
+    <button
+      id="sidebar"
+      class="text-white font-medium px-6 py-2 rounded-xl bg-blue-700"
+    >
+      open sidebar
+    </button>
+    <div
+      id="overlay"
+      class="w-full h-full bg-black bg-opacity-70 transistion-all duration-300 opacity-0 pointer-events-none fixed left-0 top-0"
+    ></div>
+    <div
+      id="side_links"
+      class="bg-blue-700 py-4 px-2 z-40 rounded-r-xl transistion-all duration-300 fixed w-[300px] top-0 -right-[100%] h-full"
+    >
+      <div class="flex justify-between items-center mb-2 px-4">
+        <a
+          href="/"
+          onclick="RemoveSidebar()"
+          class="text-decoration-none text-2xl font-mono font-medium uppercase text-white mb-0 cursor-pointer"
+        >
+          JS-PRACTICE
+        </a>
+        <div
+          id="close"
+          class="cursor-pointer bg-blue-700 rounded-xl text-2xl text-white"
+        >
+          &#10006;
+        </div>
+      </div>
+      <div class="flex flex-col h-[calc(100vh-50px)] overflow-y-auto">
+        <a
+          onclick="RemoveSidebar()"
+          class="text-decoration-none hover:bg-white hover:text-black px-4 py-2 transition-all duration-300 rounded-lg text-xl font-mono font-medium uppercase text-white"
+          href="/select"
+          >select</a
+        >
+        <a
+          onclick="RemoveSidebar()"
+          class="text-decoration-none hover:bg-white hover:text-black px-4 py-2 transition-all duration-300 rounded-lg text-xl font-mono font-medium uppercase text-white"
+          href="/counter"
+          >counter</a
+        >
+        <a
+          onclick="RemoveSidebar()"
+          class="text-decoration-none hover:bg-white hover:text-black px-4 py-2 transition-all duration-300 rounded-lg text-xl font-mono font-medium uppercase text-white"
+          href="/savevalue"
+          >save value</a
+        >
+        <a
+          onclick="RemoveSidebar()"
+          class="text-decoration-none hover:bg-white hover:text-black px-4 py-2 transition-all duration-300 rounded-lg text-xl font-mono font-medium uppercase text-white"
+          href="/calculator"
+          >simple calculator</a
+        >
+        <a
+          onclick="RemoveSidebar()"
+          class="text-decoration-none hover:bg-white hover:text-black px-4 py-2 transition-all duration-300 rounded-lg text-xl font-mono font-medium uppercase text-white"
+          href="/advancedcalculator"
+          >advanced calculator</a
+        >
+        <a
+          onclick="RemoveSidebar()"
+          class="text-decoration-none hover:bg-white hover:text-black px-4 py-2 transition-all duration-300 rounded-lg text-xl font-mono font-medium uppercase text-white"
+          href="/accordian"
+          >accordian</a
+        >
+        <a
+          onclick="RemoveSidebar()"
+          class="text-decoration-none hover:bg-white hover:text-black px-4 py-2 transition-all duration-300 rounded-lg text-xl font-mono font-medium uppercase text-white"
+          href="/tabs"
+          >tabs</a
+        >
+        <a
+          onclick="RemoveSidebar()"
+          class="text-decoration-none hover:bg-white hover:text-black px-4 py-2 transition-all duration-300 rounded-lg text-xl font-mono font-medium uppercase text-white"
+          href="/texteditor"
+          >text editer</a
+        >
+        <a
+          onclick="RemoveSidebar()"
+          class="text-decoration-none hover:bg-white hover:text-black px-4 py-2 transition-all duration-300 rounded-lg text-xl font-mono font-medium uppercase text-white"
+          href="/taskapp"
+          >task app</a
+        >
+      </div>
+    </div>
+  </div>
+    <div class="flex items-center justify-center">
+      <div
+        class="bg-white shadow-xl rounded-xl flex justify-center items-center flex-col gap-5 p-10"
+      >
+        <h2 class="font-medium text-3xl font-mono text-center max-w-[300px]">
+          CALCULATOR
+        </h2>
+        <p
+          class="opacity-30 text-3xl font-mono py-2 px-4 rounded-xl border-2 border-solid border-blue-700"
+          id="result"
+        >
+          Result Here
+        </p>
+        <input
+          id="firstvalue"
+          class="outline-none py-2 font-mono text-black text-2xl px-4 rounded-xl border-2 border-solid border-blue-700 w-full"
+          type="number"
+          placeholder="First Value"
+        />
+        <input
+          id="secondvalue"
+          class="outline-none py-2 font-mono text-black text-2xl px-4 rounded-xl border-2 border-solid border-blue-700 w-full"
+          type="number"
+          placeholder="Second Value"
+        />
+        <div class="flex gap-3">
+          <button
+            id="plus"
+            class="font-mono text-white text-2xl bg-blue-700 rounded-xl px-4 py-2"
+          >
+            +
+          </button>
+          <button
+            id="minus"
+            class="font-mono text-white text-2xl bg-blue-700 rounded-xl px-4 py-2"
+          >
+            -
+          </button>
+          <button
+            id="multiply"
+            class="font-mono text-white text-2xl bg-blue-700 rounded-xl px-4 py-2"
+          >
+            *
+          </button>
+          <button
+            id="divide"
+            class="font-mono text-white text-2xl bg-blue-700 rounded-xl px-4 py-2"
+          >
+            \
+          </button>
+          <button
+            id="clear"
+            class="font-mono text-white text-2xl bg-blue-700 rounded-xl px-4 py-2"
+          >
+            Clear
+          </button>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="/main.js"></script>
+    <script>
+      var result = document.getElementById("result");
+      var firstvalue = document.getElementById("firstvalue");
+      var secondvalue = document.getElementById("secondvalue");
+      var plus = document.getElementById("plus");
+      var minus = document.getElementById("minus");
+      var multiply = document.getElementById("multiply");
+      var divide = document.getElementById("divide");
+      var clear = document.getElementById("clear");
+      plus.addEventListener("click", function () {
+        var firstNumber = Number(firstvalue.value);
+        var secondNumber = Number(secondvalue.value);
+        result.innerHTML = firstNumber + secondNumber;
+      });
+      minus.addEventListener("click", function () {
+        var firstNumber = Number(firstvalue.value);
+        var secondNumber = Number(secondvalue.value);
+        result.innerHTML = firstNumber - secondNumber;
+      });
+      divide.addEventListener("click", function () {
+        var firstNumber = Number(firstvalue.value);
+        var secondNumber = Number(secondvalue.value);
+        result.innerHTML = firstNumber / secondNumber;
+      });
+      multiply.addEventListener("click", function () {
+        var firstNumber = Number(firstvalue.value);
+        var secondNumber = Number(secondvalue.value);
+        result.innerHTML = firstNumber * secondNumber;
+      });
+      clear.addEventListener("click", function () {
+        result.innerHTML = "Result Here";
+        firstvalue.value = null;
+        secondvalue.value = null;
+      });
+    </script>
+  </body>
+</html>

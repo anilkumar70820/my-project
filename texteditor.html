@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/logo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TEXT-EDITOR</title>
+    <meta name="title" content="Java Script Basics Practice" />
+    <meta
+      name="description"
+      content="Java Script Basics Practice Like Counter, Event Listeners, Calculator"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://custom-tabs-daebf.web.app/" />
+    <meta property="og:title" content="Java Script Basics Practice" />
+    <meta
+      property="og:description"
+      content="Java Script Basics Practice Like Counter, Event Listeners, Calculator"
+    />
+    <meta property="og:image" content="/logo.png" />
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://custom-tabs-daebf.web.app/" />
+    <meta property="twitter:title" content="Java Script Basics Practice" />
+    <meta
+      property="twitter:description"
+      content="Java Script Basics Practice Like Counter, Event Listeners, Calculator"
+    />
+    <meta property="twitter:image" content="/logo.png" />
+  </head>
+  <body>
+    <div
+      class="bg-white flex justify-between items-center shadow-lg sm:px-5 px-3 py-4 sticky top-0 left-0 z-50"
+    >
+      <h2
+        class="font-medium sm:text-3xl text-xl font-mono text-center uppercase"
+      >
+        sidebar
+      </h2>
+      <button
+        id="sidebar"
+        class="text-white font-medium px-6 py-2 rounded-xl bg-blue-700"
+      >
+        open sidebar
+      </button>
+      <div
+        id="overlay"
+        class="w-full h-full bg-black bg-opacity-70 transistion-all duration-300 opacity-0 pointer-events-none fixed left-0 top-0"
+      ></div>
+      <div
+        id="side_links"
+        class="bg-blue-700 py-4 px-2 z-40 rounded-r-xl transistion-all duration-300 fixed w-[300px] top-0 -right-[100%] h-full"
+      >
+        <div class="flex justify-between items-center mb-2 px-4">
+          <a
+            href="/"
+            onclick="RemoveSidebar()"
+            class="text-decoration-none text-2xl font-mono font-medium uppercase text-white mb-0 cursor-pointer"
+          >
+            JS-PRACTICE
+          </a>
+          <div
+            id="close"
+            class="cursor-pointer bg-blue-700 rounded-xl text-2xl text-white"
+          >
+            &#10006;
+          </div>
+        </div>
+        <div class="flex flex-col h-[calc(100vh-50px)] overflow-y-auto">
+          <a
+            onclick="RemoveSidebar()"
+            class="text-decoration-none hover:bg-white hover:text-black px-4 py-2 transition-all duration-300 rounded-lg text-xl font-mono font-medium uppercase text-white"
+            href="/select"
+            >select</a
+          >
+          <a
+            onclick="RemoveSidebar()"
+            class="text-decoration-none hover:bg-white hover:text-black px-4 py-2 transition-all duration-300 rounded-lg text-xl font-mono font-medium uppercase text-white"
+            href="/counter"
+            >counter</a
+          >
+          <a
+            onclick="RemoveSidebar()"
+            class="text-decoration-none hover:bg-white hover:text-black px-4 py-2 transition-all duration-300 rounded-lg text-xl font-mono font-medium uppercase text-white"
+            href="/savevalue"
+            >save value</a
+          >
+          <a
+            onclick="RemoveSidebar()"
+            class="text-decoration-none hover:bg-white hover:text-black px-4 py-2 transition-all duration-300 rounded-lg text-xl font-mono font-medium uppercase text-white"
+            href="/calculator"
+            >simple calculator</a
+          >
+          <a
+            onclick="RemoveSidebar()"
+            class="text-decoration-none hover:bg-white hover:text-black px-4 py-2 transition-all duration-300 rounded-lg text-xl font-mono font-medium uppercase text-white"
+            href="/advancedcalculator"
+            >advanced calculator</a
+          >
+          <a
+            onclick="RemoveSidebar()"
+            class="text-decoration-none hover:bg-white hover:text-black px-4 py-2 transition-all duration-300 rounded-lg text-xl font-mono font-medium uppercase text-white"
+            href="/accordian"
+            >accordian</a
+          >
+          <a
+            onclick="RemoveSidebar()"
+            class="text-decoration-none hover:bg-white hover:text-black px-4 py-2 transition-all duration-300 rounded-lg text-xl font-mono font-medium uppercase text-white"
+            href="/tabs"
+            >tabs</a
+          >
+          <a
+            onclick="RemoveSidebar()"
+            class="text-decoration-none hover:bg-white hover:text-black px-4 py-2 transition-all duration-300 rounded-lg text-xl font-mono font-medium uppercase text-white"
+            href="/texteditor"
+            >text editer</a
+          >
+          <a
+            onclick="RemoveSidebar()"
+            class="text-decoration-none hover:bg-white hover:text-black px-4 py-2 transition-all duration-300 rounded-lg text-xl font-mono font-medium uppercase text-white"
+            href="/taskapp"
+            >task app</a
+          >
+        </div>
+      </div>
+    </div>
+    <div class="flex items-center justify-center">
+      <div
+        class="bg-white shadow-xl rounded-xl flex justify-center items-center flex-col gap-5 p-10 max-w-[500px] w-full"
+      >
+        <h2
+          class="font-medium text-3xl font-mono text-center max-w-[300px] uppercase text-nowrap"
+        >
+          text editor
+        </h2>
+        <h2 id="changestyle">this is sample text</h2>
+        <div class="w-full flex flex-col gap-3">
+          <div class="relative">
+            <div
+              id="colorbox"
+              class="flex items-center justify-between border-2 border-solid border-blue-700 rounded-md w-full py-1 px-2 cursor-pointer"
+            >
+              <p id="colorselected" class="text-lg font-medium font-mono">
+                Select Color
+              </p>
+              <span id="colorarrow" class="text-xl font-bold rotate-[180deg]"
+                >^</span
+              >
+            </div>
+            <div
+              id="coloroptions"
+              class="absolute hidden z-10 shadow-xl top-[102%] border-2 border-solid bg-white border-blue-700 overflow-hidden rounded-xl max-w-[150px] w-full"
+            ></div>
+          </div>
+          <div class="relative">
+            <div
+              id="sizebox"
+              class="flex items-center justify-between border-2 border-solid border-blue-700 rounded-md w-full py-1 px-2 cursor-pointer"
+            >
+              <p id="fontsizeselected" class="text-lg font-medium font-mono">
+                Select font size
+              </p>
+              <span id="sizearrow" class="text-xl font-bold rotate-[180deg]"
+                >^</span
+              >
+            </div>
+            <div
+              id="fontsizeoptions"
+              class="absolute hidden z-10 shadow-xl top-[102%] border-2 border-solid bg-white border-blue-700 overflow-hidden rounded-xl max-w-[150px] w-full"
+            ></div>
+          </div>
+          <div class="relative">
+            <div
+              id="familybox"
+              class="flex items-center justify-between border-2 border-solid border-blue-700 rounded-md w-full py-1 px-2 cursor-pointer"
+            >
+              <p id="familyselected" class="text-lg font-medium font-mono">
+                Select font family
+              </p>
+              <span id="familyarrow" class="text-xl font-bold rotate-[180deg]"
+                >^</span
+              >
+            </div>
+            <div
+              id="familyoptions"
+              class="absolute hidden z-10 shadow-xl top-[102%] border-2 border-solid bg-white border-blue-700 overflow-hidden rounded-xl max-w-[150px] w-full"
+            ></div>
+          </div>
+          <div class="relative">
+            <div
+              id="weightbox"
+              class="flex items-center justify-between border-2 border-solid border-blue-700 rounded-md w-full py-1 px-2 cursor-pointer"
+            >
+              <p id="weightselected" class="text-lg font-medium font-mono">
+                Select font weight
+              </p>
+              <span id="weightarrow" class="text-xl font-bold rotate-[180deg]"
+                >^</span
+              >
+            </div>
+            <div
+              id="fontweightoptions"
+              class="absolute hidden z-10 shadow-xl top-[102%] border-2 border-solid bg-white border-blue-700 overflow-hidden rounded-xl max-w-[150px] w-full"
+            ></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="/main.js"></script>
+    <script>
+      var coloroptions = document.getElementById("coloroptions");
+      var fontsizeoptions = document.getElementById("fontsizeoptions");
+      var familyoptions = document.getElementById("familyoptions");
+      var colorselected = document.getElementById("colorselected");
+      var fontsizeselected = document.getElementById("fontsizeselected");
+      var familyselected = document.getElementById("familyselected");
+      var colorbox = document.getElementById("colorbox");
+      var familybox = document.getElementById("familybox");
+      var sizebox = document.getElementById("sizebox");
+      var changestyle = document.getElementById("changestyle");
+      var colorarrow = document.getElementById("colorarrow");
+      var sizearrow = document.getElementById("sizearrow");
+      var familyarrow = document.getElementById("familyarrow");
+      var weightbox = document.getElementById("weightbox");
+      var weightoptions = document.getElementById("fontweightoptions");
+      var weightarrow = document.getElementById("weightarrow");
+      var weightselected = document.getElementById("weightselected");
+      const stylecolors = [
+        {
+          color: "black",
+          colorCode: "#000000",
+        },
+        {
+          color: "light-black",
+          colorCode: "#f0f4f9",
+        },
+      ];
+      const stylefamily = ["roboto", "poppins", "inter"];
+      const stylesize = ["18px", "24px", "30px", "32px"];
+      const styleweight = [400, 500, 600, 700, 800];
+      coloroptions.innerHTML = stylecolors
+        .map((obj) => {
+          return `<p onclick="selectcolor('${obj.colorCode}')" class="text-lg font-medium font-mono py-1 ps-2 pe-10 hover:bg-blue-700 hover:text-white transistion-all duration-300 text-nowrap">${obj.color}</p>`;
+        })
+        .join("");
+      familyoptions.innerHTML = stylefamily
+        .map((obj) => {
+          return `<p onclick="selectfamily('${obj}')" class="text-lg font-medium font-mono py-1 ps-2 pe-10 hover:bg-blue-700 hover:text-white transistion-all duration-300">${obj}</p>`;
+        })
+        .join("");
+      fontsizeoptions.innerHTML = stylesize
+        .map((obj) => {
+          return `<p onclick="selectsize('${obj}')" class="text-lg font-medium font-mono py-1 ps-2 pe-10 hover:bg-blue-700 hover:text-white transistion-all duration-300">${obj}</p>`;
+        })
+        .join("");
+      fontweightoptions.innerHTML = styleweight
+        .map((obj) => {
+          return `<p onclick="selectweight('${obj}')" class="text-lg font-medium font-mono py-1 ps-2 pe-10 hover:bg-blue-700 hover:text-white transistion-all duration-300">${obj}</p>`;
+        })
+        .join("");
+      // ============= change color ==========
+      function selectcolor(obj) {
+        colorselected.innerHTML = obj;
+        changestyle.style.color = obj;
+        colorarrow.classList.remove("rotate-[180deg]");
+      }
+
+      colorbox.addEventListener("click", function (event) {
+        event.stopPropagation();
+        coloroptions.classList.toggle("hidden");
+        fontsizeoptions.classList.add("hidden");
+        familyoptions.classList.add("hidden");
+        colorarrow.classList.toggle("rotate-[180deg]");
+        familyarrow.classList.add("rotate-[180deg]");
+        sizearrow.classList.add("rotate-[180deg]");
+      });
+      document.addEventListener("click", function () {
+        if (!coloroptions.classList.contains("hidden")) {
+          coloroptions.classList.add("hidden");
+          colorarrow.classList.toggle("rotate-[180deg]");
+        }
+      });
+      // ====================== change font size ==============
+      function selectsize(val) {
+        fontsizeselected.innerHTML = val;
+        changestyle.style.fontSize = val;
+        sizearrow.classList.remove("rotate-[180deg]");
+      }
+      sizebox.addEventListener("click", function (event) {
+        event.stopPropagation();
+        fontsizeoptions.classList.toggle("hidden");
+        coloroptions.classList.add("hidden");
+        familyoptions.classList.add("hidden");
+        sizearrow.classList.toggle("rotate-[180deg]");
+        colorarrow.classList.add("rotate-[180deg]");
+        familyarrow.classList.add("rotate-[180deg]");
+      });
+      document.addEventListener("click", function () {
+        if (!fontsizeoptions.classList.contains("hidden")) {
+          fontsizeoptions.classList.add("hidden");
+          sizearrow.classList.toggle("rotate-[180deg]");
+        }
+      });
+      // ============= CHANGE FONT FAMILY =========
+      function selectfamily(val) {
+        familyselected.innerHTML = val;
+        changestyle.style.fontFamily = val;
+        familyarrow.classList.remove("rotate-[180deg]");
+      }
+      familybox.addEventListener("click", function (event) {
+        event.stopPropagation();
+        familyoptions.classList.toggle("hidden");
+        coloroptions.classList.add("hidden");
+        fontsizeoptions.classList.add("hidden");
+        familyarrow.classList.toggle("rotate-[180deg]");
+        colorarrow.classList.add("rotate-[180deg]");
+        sizearrow.classList.add("rotate-[180deg]");
+      });
+      document.addEventListener("click", function () {
+        if (!familyoptions.classList.contains("hidden")) {
+          familyoptions.classList.add("hidden");
+          familyarrow.classList.toggle("rotate-[180deg]");
+        }
+      });
+      // ============== CHANGE FONT WEIGHT ===========
+      function selectweight(val) {
+        weightselected.innerHTML = val;
+        changestyle.style.fontWeight = val;
+        weightarrow.classList.remove("rotate-[180deg]");
+      }
+      weightbox.addEventListener("click", function (event) {
+        event.stopPropagation();
+        weightoptions.classList.toggle("hidden");
+        coloroptions.classList.add("hidden");
+        fontsizeoptions.classList.add("hidden");
+        familyoptions.classList.add("hidden");
+        weightarrow.classList.toggle("rotate-[180deg]");
+        colorarrow.classList.add("rotate-[180deg]");
+        sizearrow.classList.add("rotate-[180deg]");
+        familyarrow.classList.add("rotate-[180deg]");
+      });
+      document.addEventListener("click", function () {
+        if (!weightoptions.classList.contains("hidden")) {
+          weightoptions.classList.add("hidden");
+          weightarrow.classList.toggle("rotate-[180deg]");
+        }
+      });
+    </script>
+  </body>
+</html>
