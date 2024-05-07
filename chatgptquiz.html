@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz App</title>
+  <style>
+    /* Add your CSS styles here */
+  </style>
+</head>
+<body>
+  <div id="quiz">
+    <h1>Quiz App</h1>
+    <div id="question"></div>
+    <div id="options"></div>
+    <button id="submit">Submit</button>
+    <div id="result" class="bg-black"></div>
+  </div>
+
+  <script>
+    // Quiz data
+    const quizData = [
+      {
+        question: "What is the capital of France?",
+        options: ["Paris", "London", "Berlin", "Rome"],
+        answer: "Paris"
+      },
+      {
+        question: "Who wrote 'Romeo and Juliet'?",
+        options: ["William Shakespeare", "Charles Dickens", "Jane Austen", "Leo Tolstoy"],
+        answer: "William Shakespeare"
+      },
+      {
+        question: "What is the capital of France?",
+        options: ["Paris", "London", "Berlin", "Rome"],
+        answer: "Paris"
+      },
+      {
+        question: "Who wrote 'Romeo and Juliet'?",
+        options: ["William Shakespeare", "Charles Dickens", "Jane Austen", "Leo Tolstoy"],
+        answer: "William Shakespeare"
+      },
+      {
+        question: "What is the capital of France?",
+        options: ["Paris", "London", "Berlin", "Rome"],
+        answer: "Paris"
+      },
+      {
+        question: "Who wrote 'Romeo and Juliet'?",
+        options: ["William Shakespeare", "Charles Dickens", "Jane Austen", "Leo Tolstoy"],
+        answer: "William Shakespeare"
+      },
+      {
+        question: "What is the capital of France?",
+        options: ["Paris", "London", "Berlin", "Rome"],
+        answer: "Paris"
+      },
+      {
+        question: "Who wrote 'Romeo and Juliet'?",
+        options: ["William Shakespeare", "Charles Dickens", "Jane Austen", "Leo Tolstoy"],
+        answer: "William Shakespeare"
+      },
+      // Add more questions as needed
+    ];
+
+    const quizContainer = document.getElementById("quiz");
+    const questionElement = document.getElementById("question");
+    const optionsElement = document.getElementById("options");
+    const submitButton = document.getElementById("submit");
+    const resultElement = document.getElementById("result");
+
+    let currentQuestion = 0;
+    let score = 0;
+
+    function showQuestion() {
+      const question = quizData[currentQuestion];
+      questionElement.textContent = question.question;
+
+      optionsElement.innerHTML = "";
+
+      question.options.forEach(option => {
+        const button = document.createElement("button");
+        button.textContent = option;
+        button.addEventListener("click", () => {
+          checkAnswer(option);
+        });
+        optionsElement.appendChild(button);
+      });
+    }
+
+    function checkAnswer(selectedAnswer) {
+      const correctAnswer = quizData[currentQuestion].answer;
+      if (selectedAnswer === correctAnswer) {
+        score++;
+      }
+      currentQuestion++;
+
+      if (currentQuestion < quizData.length) {
+        showQuestion();
+      } else {
+        showResult();
+      }
+    }
+
+    function showResult() {
+      quizContainer.style.display = "none";
+      resultElement.innerHTML = `Your score: ${score} out of ${quizData.length}`;
+      resultElement.style.display = "block"; // Show the result
+    }
+
+    submitButton.addEventListener("click", showQuestion);
+
+    // Show the first question when the page loads
+    showQuestion();
+  </script>
+</body>
+</html>

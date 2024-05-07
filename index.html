@@ -66,61 +66,7 @@
             &#10006;
           </div>
         </div>
-        <div class="flex flex-col h-[calc(100vh-50px)] overflow-y-auto">
-          <a
-            onclick="RemoveSidebar()"
-            class="text-decoration-none hover:bg-white hover:text-black px-4 py-2 transition-all duration-300 rounded-lg text-xl font-mono font-medium uppercase text-white"
-            href="/select"
-            >select</a
-          >
-          <a
-            onclick="RemoveSidebar()"
-            class="text-decoration-none hover:bg-white hover:text-black px-4 py-2 transition-all duration-300 rounded-lg text-xl font-mono font-medium uppercase text-white"
-            href="/counter"
-            >counter</a
-          >
-          <a
-            onclick="RemoveSidebar()"
-            class="text-decoration-none hover:bg-white hover:text-black px-4 py-2 transition-all duration-300 rounded-lg text-xl font-mono font-medium uppercase text-white"
-            href="/savevalue"
-            >save value</a
-          >
-          <a
-            onclick="RemoveSidebar()"
-            class="text-decoration-none hover:bg-white hover:text-black px-4 py-2 transition-all duration-300 rounded-lg text-xl font-mono font-medium uppercase text-white"
-            href="/calculator"
-            >simple calculator</a
-          >
-          <a
-            onclick="RemoveSidebar()"
-            class="text-decoration-none hover:bg-white hover:text-black px-4 py-2 transition-all duration-300 rounded-lg text-xl font-mono font-medium uppercase text-white"
-            href="/advancedcalculator"
-            >advanced calculator</a
-          >
-          <a
-            onclick="RemoveSidebar()"
-            class="text-decoration-none hover:bg-white hover:text-black px-4 py-2 transition-all duration-300 rounded-lg text-xl font-mono font-medium uppercase text-white"
-            href="/accordian"
-            >accordian</a
-          >
-          <a
-            onclick="RemoveSidebar()"
-            class="text-decoration-none hover:bg-white hover:text-black px-4 py-2 transition-all duration-300 rounded-lg text-xl font-mono font-medium uppercase text-white"
-            href="/tabs"
-            >tabs</a
-          >
-          <a
-            onclick="RemoveSidebar()"
-            class="text-decoration-none hover:bg-white hover:text-black px-4 py-2 transition-all duration-300 rounded-lg text-xl font-mono font-medium uppercase text-white"
-            href="/texteditor"
-            >text editer</a
-          >
-          <a
-            onclick="RemoveSidebar()"
-            class="text-decoration-none hover:bg-white hover:text-black px-4 py-2 transition-all duration-300 rounded-lg text-xl font-mono font-medium uppercase text-white"
-            href="/taskapp"
-            >task app</a
-          >
+        <div class="flex flex-col h-[calc(100vh-50px)] overflow-y-auto" id="navlinksdata">
         </div>
       </div>
     </div>
@@ -743,7 +689,7 @@
           my task app
         </h2>
         <div
-          class="border-2 border-solid border-blue-700 rounded-xl px-2 py-1 w-full flex gap-2 items-center"
+          class="border-2 border-solid border-blue-700 rounded-xl px-1 py-1 w-full flex gap-2 items-center"
         >
           <input
             id="inputtask"
@@ -760,6 +706,33 @@
         </div>
         <div id="showtask" class="w-full"></div>
       </div>
+      <!-- ========= YEAR FUNCTION ======== -->
+      <div
+        class="bg-white shadow-xl rounded-xl flex justify-center items-center flex-col gap-3 sm:p-10 p-5"
+      >
+        <h2
+          class="font-medium text-3xl font-mono text-center max-w-[300px] uppercase"
+        >
+          get year
+        </h2>
+        <div class="flex items-center gap-2">
+          <p class="text-2xl font-medium font-mono mb-0">Year =</p>
+          <p id="year" class="text-2xl font-medium font-mono mb-0"></p>
+        </div>
+        <div class="flex items-center gap-2">
+          <p class="text-2xl font-medium font-mono mb-0">Month =</p>
+          <p id="month" class="text-2xl font-medium font-mono mb-0"></p>
+        </div>
+        <div class="flex items-center gap-2">
+          <p class="text-2xl font-medium font-mono mb-0">Day =</p>
+          <p id="day" class="text-2xl font-medium font-mono mb-0"></p>
+        </div>
+        <div class="flex items-center gap-2">
+          <p class="text-2xl font-medium font-mono mb-0">Time =</p>
+          <p id="time" class="text-2xl font-medium font-mono mb-0"></p>
+        </div>
+      </div>
+     
     </div>
 
     <!-- ================ ONCLICK COUNT SCRIPT ======= -->
@@ -1383,6 +1356,17 @@
             .join("");
         }
       }
+    </script>
+    <!-- =========== YEAR FUNCTION ========= -->
+    <script>
+      var year = document.getElementById("year");
+      var month = document.getElementById("month");
+      var day = document.getElementById("day");
+      var time = document.getElementById("time");
+      year.innerHTML = new Date().getFullYear();
+      month.innerHTML = new Date().getMonth() +1;
+      day.innerHTML = new Date().getDate();
+      time.innerHTML = new Date().toLocaleTimeString();
     </script>
 
     <script type="module" src="/main.js"></script>

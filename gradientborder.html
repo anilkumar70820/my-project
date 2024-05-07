@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BORDER-GRADIENT</title>
+    <link rel="stylesheet" href="/style.css" />
+    <style>
+      .bg_gradient {
+        background: linear-gradient(
+          200deg,
+          blue 5%,
+          red 75%,
+          yellow 100%,
+          orange 25%
+        );
+      }
+      .my_box {
+        /* broder-radius should be same on both my_box and my_box::after */
+        border-radius: 20px;
+        /* box background */
+        background: linear-gradient(
+          140.61deg,
+          rgba(255, 255, 255, 0.08) -1.87%,
+          rgba(255, 255, 255, 0) 105.41%
+        );
+        backdrop-filter: blur(11px);
+        /* background: transparent; */
+        position: relative;
+        /* below padding is equivalent to line no.46 which is padding-5px */
+        padding: 5px;
+      }
+
+      .my_box::after {
+        content: "";
+        position: absolute;
+        /* broder-radius should be same on both my_box and my_box::after */
+        border-radius: 20px;
+        /* this paadding is the width of border */
+        padding: 5px;
+        /* broder-color */
+        background: linear-gradient(
+          200deg,
+          blue 5%,
+          red 75%,
+          yellow 100%,
+          orange 25%
+        );
+        /*  we are using below property instead of left-0 top-0 bottom-0 right-0 */
+        inset: 0;
+        /* height: 100%;
+           width: 100%;
+           top: 0;
+           left: 0; */
+        -webkit-mask: linear-gradient(#fff 0 0) content-box,
+          linear-gradient(#fff 0 0);
+        /* the mask-composite property specifies that the XOR blending mode should be used to combine the mask image and the element's background. */
+        -webkit-mask-composite: xor;
+        pointer-events: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <div
+        class="bg-white flex justify-between items-center shadow-lg sm:px-5 px-3 py-4 sticky top-0 left-0 z-50"
+      >
+        <h2
+          class="font-medium sm:text-3xl text-xl font-mono text-center uppercase"
+        >
+          sidebar
+        </h2>
+        <button
+          id="sidebar"
+          class="text-white font-medium px-6 py-2 rounded-xl bg-blue-700"
+        >
+          open sidebar
+        </button>
+        <div
+          id="overlay"
+          class="w-full h-full bg-black bg-opacity-70 transistion-all duration-300 opacity-0 pointer-events-none fixed left-0 top-0"
+        ></div>
+        <div
+          id="side_links"
+          class="bg-blue-700 py-4 px-2 z-40 rounded-r-xl transistion-all duration-300 fixed w-[300px] top-0 -right-[100%] h-full"
+        >
+          <div class="flex justify-between items-center mb-2 px-4">
+            <a
+              href="/"
+              onclick="RemoveSidebar()"
+              class="text-decoration-none text-2xl font-mono font-medium uppercase text-white mb-0 cursor-pointer"
+            >
+              JS-PRACTICE
+            </a>
+            <div
+              id="close"
+              class="cursor-pointer bg-blue-700 rounded-xl text-2xl text-white"
+            >
+              &#10006;
+            </div>
+          </div>
+          <div class="flex flex-col h-[calc(100vh-50px)] overflow-y-auto" id="navlinksdata">
+          </div>
+        </div>
+      </div>
+      <div class="!p-5 max-w-[400px] mx-auto my_box mt-10 shadow-xl">
+        <h1 class="text-2xl text-black font-semibold">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio, quo.
+          Inventore
+        </h1>
+      </div>
+      <div
+        class="bg_gradient p-[1px] rounded-lg max-w-[400px] mx-auto mt-5 shadow-xl"
+      >
+        <div class="bg-white rounded-lg p-5">
+          <h1 class="text-black font-bold">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate
+            repellat, tenetur inventore nesciunt minima iusto! Cumque mollitia
+            quibusdam veniam explicabo.
+          </h1>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>

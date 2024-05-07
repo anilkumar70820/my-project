@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gradient Border 2</title>
+    <style>
+        .box::after {
+            background: linear-gradient(93.95deg,
+                    #01B4CA 2.06%,
+                    #3648D9 21.03%,
+                    #9E00FF 39.62%,
+                    #EB00FF 58.15%,
+                    #1400FF 77.84%,
+                    #01B4CA 96.77%);
+            -webkit-mask:
+                linear-gradient(#fff 0 0) padding-box,
+                linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+        }
+       
+      
+    </style>
+</head>
+<body>
+    <!-- ========= SIDEBAR ============ -->
+    <div
+    class="bg-white flex justify-between items-center shadow-lg sm:px-5 px-3 py-4 sticky top-0 left-0 z-50"
+  >
+    <h2
+      class="font-medium sm:text-3xl text-xl font-mono text-center uppercase"
+    >
+      sidebar
+    </h2>
+    <button
+      id="sidebar"
+      class="text-white font-medium px-6 py-2 rounded-xl bg-blue-700"
+    >
+      open sidebar
+    </button>
+    <div
+      id="overlay"
+      class="w-full h-full bg-black bg-opacity-70 transistion-all duration-300 opacity-0 pointer-events-none fixed left-0 top-0"
+    ></div>
+    <div
+      id="side_links"
+      class="bg-blue-700 py-4 px-2 z-40 rounded-r-xl transistion-all duration-300 fixed w-[300px] top-0 -right-[100%] h-full"
+    >
+      <div class="flex justify-between items-center mb-2 px-4">
+        <a
+          href="/"
+          onclick="RemoveSidebar()"
+          class="text-decoration-none text-2xl font-mono font-medium uppercase text-white mb-0 cursor-pointer"
+        >
+          JS-PRACTICE
+        </a>
+        <div
+          id="close"
+          class="cursor-pointer bg-blue-700 rounded-xl text-2xl text-white"
+        >
+          &#10006;
+        </div>
+      </div>
+      <div class="flex flex-col h-[calc(100vh-50px)] overflow-y-auto" id="navlinksdata">
+      </div>
+    </div>
+  </div>
+  <div class="container mx-auto">
+    <div class="mt-5">
+        <div>
+            <button class="box cursor-pointer px-8 py-4 bg-green-950 relative rounded-xl after:rounded-xl after:absolute after:h-full after:w-full after:left-0 after:top-0 after:border-[3px] after:border-solid after:border-transparent">
+                <span class="box_child text-white font-mono font-semibold tetx-xl">
+                    Get Started
+                </span>
+            </button>
+        </div>
+    </div>
+  
+    <!-- <button id="click_me"> Click me</button>
+    <button id="click_me2"> Click me</button>
+    <button id="click_me3"> Click me</button> -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <!-- <script>
+        const btn = document.getElementById("click_me")
+        const btn2 = document.getElementById("click_me2")
+        const btn3 = document.getElementById("click_me3")
+        const arr = [1, 2, 3]
+        btn.addEventListener("click", () => {
+            localStorage.setItem("btn_value", )
+            const localValue = localStorage.getItem("btn_value")
+            console.log(localValue, "local");
+        })
+        btn2.addEventListener("click", () => {
+            localStorage.setItem("btn_value", arr[1])
+            const localValue = localStorage.getItem("btn_value")
+            console.log(localValue, "local");
+        })
+        btn3.addEventListener("click", () => {
+            localStorage.setItem("btn_value", arr[2])
+            const localValue = localStorage.getItem("btn_value")
+            console.log(localValue, "local");
+        })
+        const fetchData = async (url) => {
+            try {
+                const data = await axios(`https://jsonplaceholder.typicode.com/${url}`)
+                console.log(data.data.title);
+            } catch (e) {
+                console.log("object");
+            }
+        }
+        fetchData('todos/1')
+    </script> -->
+    <script type="module" src="/main.js"></script>
+</body>
+</html>
