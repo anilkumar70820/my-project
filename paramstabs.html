@@ -28,73 +28,76 @@
     <meta property="twitter:image" content="/logo.png" />
   </head>
   <body>
-   
-      <div
-        class="bg-white flex justify-between items-center shadow-lg sm:px-5 px-3 py-4 sticky top-0 left-0 z-50"
+    <div
+      class="bg-white flex justify-between items-center shadow-lg sm:px-5 px-3 py-4 sticky top-0 left-0 z-50"
+    >
+      <a
+        href="/"
+        class="font-medium sm:text-3xl text-xl font-mono text-center uppercase"
       >
-        <a
-          href="/"
-          class="font-medium sm:text-3xl text-xl font-mono text-center uppercase"
-        >
-          sidebar
-        </a>
-        <button
-          id="sidebar"
-          class="text-white font-medium px-6 py-2 rounded-xl bg-blue-700"
-        >
-          open sidebar
-        </button>
-        <div
-          id="overlay"
-          class="w-full h-full bg-black bg-opacity-70 transistion-all duration-300 opacity-0 pointer-events-none fixed left-0 top-0"
-        ></div>
-        <div
-          id="side_links"
-          class="bg-blue-700 py-4 px-2 z-40 rounded-r-xl transistion-all duration-300 fixed w-[300px] top-0 -right-[100%] h-full"
-        >
-          <div class="flex justify-between items-center mb-2 px-4">
-            <a
-              href="/"
-              onclick="RemoveSidebar()"
-              class="text-decoration-none text-2xl font-mono font-medium uppercase text-white mb-0 cursor-pointer"
-            >
-              JS-PRACTICE
-            </a>
-            <div
-              id="close"
-              class="cursor-pointer bg-blue-700 rounded-xl text-2xl text-white"
-            >
-              &#10006;
-            </div>
-          </div>
+        sidebar
+      </a>
+      <button
+        id="sidebar"
+        class="text-white font-medium px-6 py-2 rounded-xl bg-blue-700"
+      >
+        open sidebar
+      </button>
+      <div
+        id="overlay"
+        class="w-full h-full bg-black bg-opacity-70 transistion-all duration-300 opacity-0 pointer-events-none fixed left-0 top-0"
+      ></div>
+      <div
+        id="side_links"
+        class="bg-blue-700 py-4 px-2 z-40 rounded-r-xl transistion-all duration-300 fixed w-[300px] top-0 -right-[100%] h-full"
+      >
+        <div class="flex justify-between items-center mb-2 px-4">
+          <a
+            href="/"
+            onclick="RemoveSidebar()"
+            class="text-decoration-none text-2xl font-mono font-medium uppercase text-white mb-0 cursor-pointer"
+          >
+            JS-PRACTICE
+          </a>
           <div
-            class="flex flex-col h-[calc(100vh-50px)] overflow-y-auto"
-            id="navlinksdata"
-          ></div>
+            id="close"
+            class="cursor-pointer bg-blue-700 rounded-xl text-2xl text-white"
+          >
+            &#10006;
+          </div>
         </div>
+        <div
+          class="flex flex-col h-[calc(100vh-50px)] overflow-y-auto"
+          id="navlinksdata"
+        ></div>
       </div>
-      <div class="max-w-[1140px] mx-auto px-3  mt-10">
+    </div>
+    <div class="max-w-[1140px] mx-auto px-3 mt-10">
       <div class="flex gap-6 overflow-x-auto">
         <!-- Tab buttons -->
-        <button id="tabBtn1"
+        <button
+          id="tabBtn1"
           onclick="clickHandler('1')"
           class="px-8 py-3 rounded-xl bg-blue-700 text-white font-medium font-mono text-xl text-nowrap"
         >
           tab one
         </button>
-        <button id="tabBtn2"
+        <button
+          id="tabBtn2"
           onclick="clickHandler('2')"
           class="px-8 py-3 rounded-xl bg-blue-700 text-white font-medium font-mono text-xl text-nowrap"
         >
           tab two
         </button>
-        <button id="tabBtn3"
+        <button
+          id="tabBtn3"
           onclick="clickHandler('3')"
           class="px-8 py-3 rounded-xl bg-blue-700 text-white font-medium font-mono text-xl text-nowrap"
         >
           tab three
         </button>
-        <button id="tabBtn4"
+        <button
+          id="tabBtn4"
           onclick="clickHandler('4')"
           class="px-8 py-3 rounded-xl bg-blue-700 text-white font-medium font-mono text-xl text-nowrap"
         >
@@ -103,62 +106,78 @@
       </div>
       <div class="mt-10">
         <!-- Tab content -->
-        <p id="tabContent1" class="font-mono text-2xl text-black font-semibold hidden">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa, id nesciunt. Sed optio fugit sequi iste quia ipsa facere ipsam?
+        <p
+          id="tabContent1"
+          class="font-mono text-2xl text-black font-semibold hidden"
+        >
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa, id
+          nesciunt. Sed optio fugit sequi iste quia ipsa facere ipsam?
         </p>
-        <p id="tabContent2" class="font-mono text-2xl text-black font-semibold hidden">
-          nesciunt. Sed optio fugit sequi iste quia Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa, id  ipsa facere ipsam?
+        <p
+          id="tabContent2"
+          class="font-mono text-2xl text-black font-semibold hidden"
+        >
+          nesciunt. Sed optio fugit sequi iste quia Lorem ipsum dolor sit amet
+          consectetur adipisicing elit. Ipsa, id ipsa facere ipsam?
         </p>
-        <p id="tabContent3" class="font-mono text-2xl text-black font-semibold hidden">
-          adipisicing elit. Ipsa, id nesciunt. Sed optio fugit Lorem ipsum dolor sit amet consectetur  sequi iste quia ipsa facere ipsam?
+        <p
+          id="tabContent3"
+          class="font-mono text-2xl text-black font-semibold hidden"
+        >
+          adipisicing elit. Ipsa, id nesciunt. Sed optio fugit Lorem ipsum dolor
+          sit amet consectetur sequi iste quia ipsa facere ipsam?
         </p>
-        <p id="tabContent4" class="font-mono text-2xl text-black font-semibold hidden">
-          sit amet consectetur adipisicing elit. Lorem ipsum dolor Ipsa, id nesciunt. Sed optio fugit sequi iste quia ipsa facere ipsam?
+        <p
+          id="tabContent4"
+          class="font-mono text-2xl text-black font-semibold hidden"
+        >
+          sit amet consectetur adipisicing elit. Lorem ipsum dolor Ipsa, id
+          nesciunt. Sed optio fugit sequi iste quia ipsa facere ipsam?
         </p>
       </div>
     </div>
     <script type="module" src="/main.js"></script>
     <script>
-        let params = "";
-        function getParams() {
-          const searchParams = new URLSearchParams(window.location.search);
-          return searchParams.get("type");
+      let params = "";
+      function getParams() {
+        const searchParams = new URLSearchParams(window.location.search);
+        return searchParams.get("type");
+      }
+
+      function setParams(value) {
+        params = value;
+      }
+
+      function clickHandler(tabId) {
+        const value = tabId;
+        window.history.pushState({}, "", `?type=${value}`);
+        setParams(value);
+        // Show/hide tab content based on the selected tab
+        showTabContent();
+      }
+
+      function showTabContent() {
+        if (!params) {
+          params = "1";
         }
-    
-        function setParams(value) {
-          params = value;
-        }
-    
-        function clickHandler(tabId) {
-          const value = tabId;
-          window.history.pushState({}, "", `?type=${value}`);
-          setParams(value);
-          // Show/hide tab content based on the selected tab
-          showTabContent();
-        }
-    
-        function showTabContent() {
-            if (!params) {
-    params = "1"; 
-  }
-          for (let i = 1; i <= 4; i++) {
-            const tabContent = document.getElementById(`tabContent${i}`);
-            const tabBtn = document.getElementById(`tabBtn${i}`);
-            if (params === `${i}`) {
-              tabContent.classList.remove("hidden");
-              tabBtn.classList.add("!bg-red-500");
-            } else {
-              tabContent.classList.add("hidden");
-              tabBtn.classList.remove("!bg-red-500");
-            }
+        for (let i = 1; i <= 4; i++) {
+          const tabContent = document.getElementById(`tabContent${i}`);
+          const tabBtn = document.getElementById(`tabBtn${i}`);
+          if (params === `${i}`) {
+            tabContent.classList.remove("hidden");
+            tabBtn.classList.add("!bg-red-500");
+          } else {
+            tabContent.classList.add("hidden");
+            tabBtn.classList.remove("!bg-red-500");
           }
         }
-    
-        // Initial setup
-        document.addEventListener("DOMContentLoaded", function() {
-          params = getParams();
-          showTabContent();
-        });
-      </script>
+      }
+
+      // Initial setup
+      document.addEventListener("DOMContentLoaded", function () {
+        params = getParams();
+        showTabContent();
+      });
+    </script>
   </body>
 </html>
