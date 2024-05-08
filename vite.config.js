@@ -19,6 +19,7 @@ export default defineConfig({
         apidatafetch: resolve(__dirname, "apidatafetch.html"),
         localstorage: resolve(__dirname, "localstorage.html"),
         gradientborder2: resolve(__dirname, "gradientborder2.html"),
+        paramstabs: resolve(__dirname, "paramstabs.html"),
       },
     },
   },

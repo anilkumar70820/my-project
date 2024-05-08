@@ -32,7 +32,7 @@ const navLinksArr = [
   },
   {
     link: "text editer",
-    href: "/textediter",
+    href: "/texteditor",
   },
   {
     link: "task app",
@@ -57,6 +57,10 @@ const navLinksArr = [
   {
     link: "gradientborder2",
     href: "/gradientborder2",
+  },
+  {
+    link: "params tabs",
+    href: "/paramstabs",
   },
 ];
 
