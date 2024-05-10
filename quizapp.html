@@ -223,13 +223,13 @@
           option.style.backgroundColor = "red";
           option.style.color = "white";
           // Highlight the correct answer if the selected answer is incorrect
-          for (let i = 0; i < options.length; i++) {
-            if (quizData[currentQuestion].options[i] === correctAnswer) {
-              options[i].style.backgroundColor = "green";
-              options[i].style.color = "white";
-              break;
-            }
-          }
+          // for (let i = 0; i < options.length; i++) {
+          //   if (quizData[currentQuestion].options[i] === correctAnswer) {
+          //     options[i].style.backgroundColor = "green";
+          //     options[i].style.color = "white";
+          //     break;
+          //   }
+          // }
         }
         // If it's the last question, show the submit button and hide navigation buttons
         if (currentQuestion === quizData.length - 1) {
@@ -265,8 +265,8 @@
               options[selectedIndex].style.backgroundColor = "green";
               options[selectedIndex].style.color = "white";
             }
-            options[correctIndex].style.backgroundColor = "green";
-            options[correctIndex].style.color = "white";
+            // options[correctIndex].style.backgroundColor = "green";
+            // options[correctIndex].style.color = "white";
           }
         }
       }
