@@ -94,7 +94,7 @@
             </div>
             <div
               id="coloroptions"
-              class="absolute hidden z-10 shadow-xl top-[102%] border-2 border-solid bg-white border-blue-700 overflow-hidden rounded-xl max-w-[150px] w-full"
+              class="absolute hidden z-10 shadow-xl top-[102%] border-2 border-solid bg-white border-blue-700 overflow-hidden rounded-xl max-w-full w-full"
             ></div>
           </div>
           <div class="relative">
@@ -111,7 +111,7 @@
             </div>
             <div
               id="fontsizeoptions"
-              class="absolute hidden z-10 shadow-xl top-[102%] border-2 border-solid bg-white border-blue-700 overflow-hidden rounded-xl max-w-[150px] w-full"
+              class="absolute hidden z-10 shadow-xl top-[102%] border-2 border-solid bg-white border-blue-700 overflow-hidden rounded-xl max-w-full w-full"
             ></div>
           </div>
           <div class="relative">
@@ -128,7 +128,7 @@
             </div>
             <div
               id="familyoptions"
-              class="absolute hidden z-10 shadow-xl top-[102%] border-2 border-solid bg-white border-blue-700 overflow-hidden rounded-xl max-w-[150px] w-full"
+              class="absolute hidden z-10 shadow-xl top-[102%] border-2 border-solid bg-white border-blue-700 overflow-hidden rounded-xl max-w-full w-full"
             ></div>
           </div>
           <div class="relative">
@@ -145,7 +145,7 @@
             </div>
             <div
               id="fontweightoptions"
-              class="absolute hidden z-10 shadow-xl top-[102%] border-2 border-solid bg-white border-blue-700 overflow-hidden rounded-xl max-w-[150px] w-full"
+              class="absolute hidden z-10 shadow-xl top-[102%] border-2 border-solid bg-white border-blue-700 overflow-hidden rounded-xl max-w-full w-full"
             ></div>
           </div>
         </div>
@@ -215,9 +215,11 @@
         coloroptions.classList.toggle("hidden");
         fontsizeoptions.classList.add("hidden");
         familyoptions.classList.add("hidden");
+        fontweightoptions.classList.add("hidden")
         colorarrow.classList.toggle("rotate-[180deg]");
         familyarrow.classList.add("rotate-[180deg]");
         sizearrow.classList.add("rotate-[180deg]");
+        weightarrow.classList.add("rotate-[180deg]");
       });
       document.addEventListener("click", function () {
         if (!coloroptions.classList.contains("hidden")) {
@@ -236,9 +238,11 @@
         fontsizeoptions.classList.toggle("hidden");
         coloroptions.classList.add("hidden");
         familyoptions.classList.add("hidden");
+        fontweightoptions.classList.add("hidden")
         sizearrow.classList.toggle("rotate-[180deg]");
         colorarrow.classList.add("rotate-[180deg]");
         familyarrow.classList.add("rotate-[180deg]");
+        weightarrow.classList.add("rotate-[180deg]");
       });
       document.addEventListener("click", function () {
         if (!fontsizeoptions.classList.contains("hidden")) {
@@ -257,9 +261,11 @@
         familyoptions.classList.toggle("hidden");
         coloroptions.classList.add("hidden");
         fontsizeoptions.classList.add("hidden");
+        fontweightoptions.classList.add("hidden")
         familyarrow.classList.toggle("rotate-[180deg]");
         colorarrow.classList.add("rotate-[180deg]");
         sizearrow.classList.add("rotate-[180deg]");
+        weightarrow.classList.add("rotate-[180deg]");
       });
       document.addEventListener("click", function () {
         if (!familyoptions.classList.contains("hidden")) {

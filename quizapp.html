@@ -28,53 +28,52 @@
     <meta property="twitter:image" content="/logo.png" />
   </head>
   <body>
-    <div
-      class="bg-white flex justify-between items-center shadow-lg sm:px-5 px-3 py-4 sticky top-0 left-0 z-50"
-    >
-    <a href="/"
-    class="font-medium sm:text-3xl text-xl font-mono text-center uppercase"
+  <!-- =========== SIDEBAR ======== -->
+  <div
+  class="bg-white flex justify-between items-center shadow-lg sm:px-5 px-3 py-4 sticky top-0 left-0 z-50"
+>
+<a href="/"
+class="font-medium sm:text-3xl text-xl font-mono text-center uppercase"
+>
+sidebar
+</a>
+  <button
+    id="sidebar"
+    class="text-white font-medium px-6 py-2 rounded-xl bg-blue-700"
   >
-    sidebar
-  </a>
-      <button
-        id="sidebar"
-        class="text-white font-medium px-6 py-2 rounded-xl bg-blue-700"
+    open sidebar
+  </button>
+  <div
+    id="overlay"
+    class="w-full h-full bg-black bg-opacity-70 transistion-all duration-300 opacity-0 pointer-events-none fixed left-0 top-0"
+  ></div>
+  <div
+    id="side_links"
+    class="bg-blue-700 py-4 px-2 z-40 rounded-r-xl transistion-all duration-300 fixed w-[300px] top-0 -right-[100%] h-full"
+  >
+    <div class="flex justify-between items-center mb-2 px-4">
+      <a
+        href="/"
+        onclick="RemoveSidebar()"
+        class="text-decoration-none text-2xl font-mono font-medium uppercase text-white mb-0 cursor-pointer"
       >
-        open sidebar
-      </button>
+        JS-PRACTICE
+      </a>
       <div
-        id="overlay"
-        class="w-full h-full bg-black bg-opacity-70 transistion-all duration-300 opacity-0 pointer-events-none fixed left-0 top-0"
-      ></div>
-      <div
-        id="side_links"
-        class="bg-blue-700 py-4 px-2 z-40 rounded-r-xl transistion-all duration-300 fixed w-[300px] top-0 -right-[100%] h-full"
+        id="close"
+        class="cursor-pointer bg-blue-700 rounded-xl text-2xl text-white"
       >
-        <div class="flex justify-between items-center mb-2 px-4">
-          <a
-            href="/"
-            onclick="RemoveSidebar()"
-            class="text-decoration-none text-2xl font-mono font-medium uppercase text-white mb-0 cursor-pointer"
-          >
-            JS-PRACTICE
-          </a>
-          <div
-            id="close"
-            class="cursor-pointer bg-blue-700 rounded-xl text-2xl text-white"
-          >
-            &#10006;
-          </div>
-        </div>
-        <div
-          class="flex flex-col h-[calc(100vh-50px)] overflow-y-auto"
-          id="navlinksdata"
-        ></div>
+        &#10006;
       </div>
     </div>
+    <div class="flex flex-col h-[calc(100vh-50px)] overflow-y-auto" id="navlinksdata">
+    </div>
+  </div>
+</div>
     <!-- ============== QUIZ APP ========= -->
     <div class="flex items-center justify-center">
       <div
-        class="bg-white shadow-xl rounded-xl flex justify-center items-center flex-col gap-3 sm:p-10 p-5"
+        class="bg-white max-w-[500px] w-full shadow-xl rounded-xl flex justify-center items-center flex-col gap-3 sm:p-10 p-5"
       >
         <h2
           class="font-medium text-3xl font-mono text-center max-w-[300px] uppercase"
@@ -83,99 +82,157 @@
         </h2>
         <div class="mb-7">
           <h2 class="font-mono font-medium text-lg mb-6" id="quizquestion"></h2>
-          <div id="quizoptions">
+          <div class="flex flex-col gap-2" id="quizoptions">
 
           </div>
         </div>
         <div class="flex gap-3 w-full">
+          <button onclick="prevQuestion()"
+            class="text-center py-2 border-solid border border-blue-700 font-mono text-lg font-medium rounded-lg text-blue-700 hover:text-white hover:bg-blue-700 transition-all duration-300 max-w-[140px] w-full"
+          >
+            Previous
+          </button>
           <button
             onclick="nextQuestion()"
             class="text-center py-2 bg-blue-700 font-mono text-lg font-medium rounded-lg text-white max-w-[140px] w-full hover:opacity-80 transition-all duration-300"
           >
             Next
           </button>
-          <button onclick="prevQuestion()"
-            class="text-center py-2 border-solid border border-blue-700 font-mono text-lg font-medium rounded-lg text-blue-700 hover:text-white hover:bg-blue-700 transition-all duration-300 max-w-[140px] w-full"
-          >
-            Previous
-          </button>
+          <button onclick="submitQuiz()" id="submitButton" class="hidden text-center py-2 bg-green-500 font-mono text-lg font-medium rounded-lg text-white max-w-[140px] w-full hover:opacity-80 transition-all duration-300">Submit</button>
+          <button onclick="resetQuiz()" id="resetButton" class="hidden text-center py-2 bg-gray-500 font-mono text-lg font-medium rounded-lg text-white max-w-[140px] w-full hover:opacity-80 transition-all duration-300">Reset</button>
         </div>
-        <input type="checkbox">
+        <div id="quizResult" class="hidden mt-5"></div>
       </div>
     </div>
 
     <!-- ========== SCRIPT ======= -->
     <script>
       const quizData = [
-        {
-          question: "Q.1 Capital of the Italy?",
-          options: ["Paris", "London", "Berlin", "Rome"],
-          answer: "Rome",
-        },
-        {
-          question: "Q.2 Where is the Taj Mahal?",
-          options: ["Agra", "Delhi", "Jaipur", "Up"],
-          answer: "Agra",
-        },
-        {
-          question: "Q.3 What is the ratio of our national flag?",
-          options: ["2:1", "4:9", "3:2", "9:2"],
-          answer: "3:2",
-        },
-        {
-          question: "Q.4 Who wrote 'Romeo and Juliet'?",
-          options: [
-            "William Shakespeare",
-            "Charles Dickens",
-            "Jane Austen",
-            "Leo Tolstoy",
-          ],
-          answer: "William Shakespeare",
-        },
-        {
-          question: "Q.5 What is the capital of France?",
-          options: ["Paris", "London", "Berlin", "Rome"],
-          answer: "Paris",
-        },
-        {
-          question: "Q.6 Who wrote 'Romeo and Juliet'?",
-          options: [
-            "William Shakespeare",
-            "Charles Dickens",
-            "Jane Austen",
-            "Leo Tolstoy",
-          ],
-          answer: "William Shakespeare",
-        },
+          {
+              question: "Q.1 Capital of Italy?",
+              options: ["Paris", "London", "Berlin", "Rome"],
+              answer: "Rome",
+          },
+          {
+              question: "Q.2 Where is the Taj Mahal?",
+              options: ["Agra", "Delhi", "Jaipur", "Up"],
+              answer: "Agra",
+          },
+          {
+              question: "Q.3 What is the ratio of our national flag?",
+              options: ["2:1", "4:9", "3:2", "9:2"],
+              answer: "3:2",
+          },
+          {
+              question: "Q.4 Who wrote 'Romeo and Juliet'?",
+              options: ["William Shakespeare", "Charles Dickens", "Jane Austen", "Leo Tolstoy"],
+              answer: "William Shakespeare",
+          },
+          {
+              question: "Q.5 What is the capital of France?",
+              options: ["Paris", "London", "Berlin", "Rome"],
+              answer: "Paris",
+          },
+          {
+              question: "Q.6 What is the Color of Parrot?",
+              options: ["Green", "White", "Both Of them", "None of the above"],
+              answer: "Both Of them",
+          },
+          {
+              question: "Q.7 What is the Color of Parrot?",
+              options: ["Green", "White", "Both Of them", "None of the above"],
+              answer: "Green",
+          },
+          {
+              question: "Q.8 What is the Color of Parrot?",
+              options: ["Red", "Black", "Both Of them", "None of the above"],
+              answer: "None of the above",
+          },
       ];
-      var quizquestion = document.getElementById("quizquestion");
-      var quizoptions = document.getElementById("quizoptions");
-      var firstquestion = 0;
-      var showquestion = quizData[firstquestion];
-      var showoptions = quizData[firstquestion]
-      quizquestion.innerHTML = showquestion.question
-quizoptions.innerHTML = showoptions.options.map((obj)=>{
-          return`<p class="font-mono font-medium text-lg border border-solid border-blue-700 rounded">${obj}</p>`
-        }).join("")
+      let currentQuestion = 0;
+      let score = 0;
+      const quizOptions = document.getElementById("quizoptions");
+      const navigationButtons = document.getElementById("navigationButtons");
+      const submitButton = document.getElementById("submitButton");
+      const resetButton = document.getElementById("resetButton");
+      const quizResult = document.getElementById("quizResult");
+  
+      function displayQuestion() {
+          const questionData = quizData[currentQuestion];
+          document.getElementById("quizquestion").textContent = questionData.question;
+          quizOptions.innerHTML = questionData.options.map((option, index) => {
+              return `<p class="option px-3 font-mono font-medium text-lg border border-solid border-blue-700 rounded" onclick="checkAnswer(this, ${index})">${option}</p>`;
+          }).join("");
+      }
+  
+      displayQuestion();
+  
+      function checkAnswer(option, index) {
+          const selectedAnswer = quizData[currentQuestion].options[index];
+          const correctAnswer = quizData[currentQuestion].answer;
+  
+          // Disable all options after selecting one
+          const options = quizOptions.querySelectorAll('.option');
+          options.forEach(opt => {
+              opt.onclick = null;
+          });
+  
+          if (selectedAnswer === correctAnswer) {
+              option.style.backgroundColor = "green";
+              option.style.color = "white";
+              score++;
+          } else {
+              option.style.backgroundColor = "red";
+              option.style.color = "white";
+              for (let i = 0; i < options.length; i++) {
+                  if (quizData[currentQuestion].options[i] === correctAnswer) {
+                      options[i].style.backgroundColor = "green";
+                      options[i].style.color = "white";
+                      break;
+                  }
+              }
+          }
+          if (currentQuestion === quizData.length - 1) {
+              submitButton.classList.remove("hidden");
+              navigationButtons.classList.add("hidden");
+          }
+      }
+  
       function nextQuestion() {
-        if (firstquestion < quizData.length) {
-          firstquestion++;
-        }
-        var showquestion = quizData[firstquestion];
-        var showoptions = quizData[firstquestion]
-        quizquestion.innerHTML = showquestion.question
-        quizoptions.innerHTML = showoptions.options.map((obj)=>{
-          return`<p class="font-mono font-medium text-lg border border-solid border-blue-700 rounded">${obj}</p>`
-        }).join("")
+          if (currentQuestion < quizData.length - 1) {
+              currentQuestion++;
+              displayQuestion();
+          }
       }
+  
       function prevQuestion() {
-        if (firstquestion <= quizData.length) {
-          firstquestion--;
-        }
-        var showquestion = quizData[firstquestion];
-        quizquestion.innerHTML = showquestion.question
+          if (currentQuestion > 0) {
+              currentQuestion--;
+              displayQuestion();
+          }
       }
-    </script>
+  
+      function submitQuiz() {
+          const totalQuestions = quizData.length;
+          const incorrectAnswers = totalQuestions - score;
+          const resultText = `You answered ${score} questions correctly out of ${totalQuestions}. ${incorrectAnswers} questions were answered incorrectly.`;
+          quizResult.textContent = resultText;
+          quizResult.classList.remove("hidden");
+          submitButton.disabled = true;
+          resetButton.classList.remove("hidden");
+      }
+  
+      function resetQuiz() {
+          currentQuestion = 0;
+          score = 0;
+          displayQuestion();
+          quizResult.classList.add("hidden");
+          submitButton.classList.add("hidden");
+          resetButton.classList.add("hidden");
+          submitButton.disabled = false;
+      }
+  </script>
+  
     <script type="module" src="/main.js"></script>
   </body>
 </html>

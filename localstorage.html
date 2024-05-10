@@ -26,6 +26,13 @@
       content="Java Script Basics Practice Like Counter, Event Listeners, Calculator"
     />
     <meta property="twitter:image" content="/logo.png" />
+    <style>
+      .tab button.active {
+  background-color: white;
+  color: black;
+  border: 1px solid blue;
+}
+    </style>
   </head>
   <body>
     <!-- ========= SIDEBAR ========== -->
@@ -73,9 +80,9 @@
         ></div>
       </div>
     </div>
-    <!-- ===================================== -->
+    <!-- ================ TABS WITH LOCAL STORAGE ===================== -->
     <div class="container mx-auto pt-5 px-3">
-      <div class="flex gap-6">
+      <div class="flex gap-6 justify-center">
         <button
           id="btn1"
           class="px-8 py-4 rounded-xl border border-transparent border-solid hover:border-blue-700 bg-blue-700 hover:bg-white transition-all duration-500 text-white hover:text-black font-semibold text-xl font-mono"
@@ -95,11 +102,70 @@
           Delete Data
         </button>
       </div>
-      <div class="mt-5">
-        <p class="text-2xl font-medium font-mono" id="localdata"></p>
+      <div class="my-5">
+        <p class="text-2xl font-medium font-mono text-center" id="localdata"></p>
+      </div>
+
+      <!-- ============ LOCALSTORAGE TABS ================ -->
+      <h2 class="text-3xl font-medium font-mono capitalize text-center mb-5">this is the active tabs from local storage</h2>
+      <div>
+        <div class="tab mb-5 flex justify-center gap-4">
+          <button class="tablinks px-8 py-4 rounded-xl border border-transparent border-solid hover:border-blue-700 bg-blue-700 hover:bg-white transition-all duration-500 text-white hover:text-black font-semibold text-xl font-mono" onclick="openCity(event, 'London')">London</button>
+          <button class="tablinks px-8 py-4 rounded-xl border border-transparent border-solid hover:border-blue-700 bg-blue-700 hover:bg-white transition-all duration-500 text-white hover:text-black font-semibold text-xl font-mono" onclick="openCity(event, 'Paris')">Paris</button>
+          <button class="tablinks px-8 py-4 rounded-xl border border-transparent border-solid hover:border-blue-700 bg-blue-700 hover:bg-white transition-all duration-500 text-white hover:text-black font-semibold text-xl font-mono" onclick="openCity(event, 'Tokyo')">Tokyo</button>
+        </div>
+        <div id="London" class="tabcontent max-w-[400px] p-10 shadow-xl rounded-xl border border-solid border-blue-700 mx-auto">
+          <h3 class="text-4xl font-bold font-mono">London</h3>
+          <p class="text-2xl font-medium font-mono">London is the capital city of England.</p>
+        </div>
+        
+        <div id="Paris" class="tabcontent hidden max-w-[400px] p-10 shadow-xl rounded-xl border border-solid border-blue-700 mx-auto">
+          <h3 class="text-4xl font-bold font-mono">Paris</h3>
+          <p class="text-2xl font-medium font-mono">Paris is the capital of France.</p> 
+        </div>
+        
+        <div id="Tokyo" class="tabcontent hidden max-w-[400px] p-10 shadow-xl rounded-xl border border-solid border-blue-700 mx-auto">
+          <h3 class="text-4xl font-bold font-mono">Tokyo</h3>
+          <p class="text-2xl font-medium font-mono">Tokyo is the capital of Japan.</p>
+        </div>
       </div>
     </div>
     <script type="module" src="/main.js"></script>
+    <!-- =============== ACTIVE TAB WITH LOCAL STORAGE ================== -->
+    <script>
+      function openCity(evt, cityName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+          tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+          tablinks[i].classList.remove("active"); // Remove active class from all tab buttons
+        }
+        document.getElementById(cityName).style.display = "block";
+        evt.currentTarget.classList.add("active"); // Add active class to the clicked tab button
+        localStorage.setItem("activetab", cityName); // Save active tab to local storage
+      }
+    
+      document.addEventListener("DOMContentLoaded", function () {
+        const getTab = localStorage.getItem("activetab");
+        const tablinks = document.getElementsByClassName("tablinks");
+        if (getTab) {
+          for (let i = 0; i < tablinks.length; i++) {
+            if (tablinks[i].getAttribute("onclick").includes(getTab)) {
+              tablinks[i].classList.add("active"); // Add active class to the tab button corresponding to the stored active tab
+              openCity({ currentTarget: tablinks[i] }, getTab); // Display the content of the stored active tab
+              break;
+            }
+          }
+        } else {
+          tablinks[0].click();
+        }
+      });
+    </script>
+    
+    <!-- ============================================== -->
     <script>
       const btn1 = document.getElementById("btn1");
       const btn2 = document.getElementById("btn2");
@@ -119,6 +185,13 @@
         const hide = "";
         const Delete = localStorage.setItem("btn1", hide);
       });
+      document.addEventListener("DOMContentLoaded", function () {
+    const getStorage = localStorage.getItem("btn1");
+    const localdata = document.getElementById("localdata");
+    if (getStorage) {
+      localdata.innerHTML = getStorage;
+    }
+  });
     </script>
   </body>
 </html>

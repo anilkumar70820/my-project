@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Gradient Border 2</title>
     <link rel="icon" type="image/svg+xml" href="/logo.png" />
     <meta name="title" content="Java Script Basics Practice" />
@@ -27,26 +27,85 @@
     />
     <meta property="twitter:image" content="/logo.png" />
     <style>
-        .box::after {
-            background: linear-gradient(93.95deg,
-                    #01B4CA 2.06%,
-                    #3648D9 21.03%,
-                    #9E00FF 39.62%,
-                    #EB00FF 58.15%,
-                    #1400FF 77.84%,
-                    #01B4CA 96.77%);
-            -webkit-mask:
-                linear-gradient(#fff 0 0) padding-box,
-                linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
-        }
+      .box::after {
+        background: linear-gradient(
+          93.95deg,
+          #01b4ca 2.06%,
+          #3648d9 21.03%,
+          #9e00ff 39.62%,
+          #eb00ff 58.15%,
+          #1400ff 77.84%,
+          #01b4ca 96.77%
+        );
+        -webkit-mask: linear-gradient(#fff 0 0) padding-box,
+          linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
        
+      }
+      /* ====================== */
+      
+      #box:hover{
+        background: linear-gradient(
+          93.95deg,
+          #01b4ca 2.06%,
+          #3648d9 21.03%,
+          #9e00ff 39.62%,
+          #eb00ff 58.15%,
+          #1400ff 77.84%,
+          #01b4ca 96.77%
+        );
+        animation: rotate 4s infinite linear;
+      }
+      @keyframes rotate {
+        0% {
+          background-position: 0% 0%; /* Start position */
+        }
+        100% {
+          background-position: 100% 100%; /* End position */
+        }
+      }
+      .gradient-border {
+        --borderWidth: 3px;
+        background: #1d1f20;
+        position: relative;
+        border-radius: 12px;
+      }
+      .gradient-border:after {
+        content: "";
+        position: absolute;
+        top: calc(-1 * var(--borderWidth));
+        left: calc(-1 * var(--borderWidth));
+        height: calc(100% + var(--borderWidth) * 2);
+        width: calc(100% + var(--borderWidth) * 2);
+        background: linear-gradient(
+          60deg,
+          rgb(243, 30, 30),
+          rgb(3, 250, 3),
+          rgb(7, 7, 225)
+        );
+        border-radius: 12px;
+        z-index: -1;
+        animation: animatedgradient 3s ease alternate infinite;
+        background-size: 300% 300%;
+      }
+
+      @keyframes animatedgradient {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+      /* ================= 3 ============ */
       
     </style>
-</head>
-<body>
-    <!-- ========= SIDEBAR ============ -->
+  </head>
+  <body>
     <div
     class="bg-white flex justify-between items-center shadow-lg sm:px-5 px-3 py-4 sticky top-0 left-0 z-50"
   >
@@ -88,51 +147,21 @@
       </div>
     </div>
   </div>
-  <div class="container mx-auto">
-    <div class="mt-5">
-        <div>
-            <button class="box cursor-pointer px-8 py-4 bg-green-950 relative rounded-xl after:rounded-xl after:absolute after:h-full after:w-full after:left-0 after:top-0 after:border-[3px] after:border-solid after:border-transparent">
-                <span class="box_child text-white font-mono font-semibold tetx-xl">
-                    Get Started
-                </span>
-            </button>
-        </div>
+    <div class="container mx-auto mt-5 px-3">
+      <button
+        class="box cursor-pointer px-8 py-4 bg-green-950 relative rounded-xl after:rounded-xl after:absolute after:h-full after:w-full after:left-0 after:top-0 after:border-[3px] after:border-solid after:border-transparent"
+      >
+        <span class="box_child text-white font-mono font-semibold tetx-xl">
+          Get Started
+        </span>
+      </button>
+      <!-- ========== -->
+      <button class="gradient-border mt-5 px-8 py-[10px] text-white font-medium text-xl ms-5 transition-all duration-500" id="box">
+        Animated
+      </button>
+      <!-- =============== -->
     </div>
-  
-    <!-- <button id="click_me"> Click me</button>
-    <button id="click_me2"> Click me</button>
-    <button id="click_me3"> Click me</button> -->
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <!-- <script>
-        const btn = document.getElementById("click_me")
-        const btn2 = document.getElementById("click_me2")
-        const btn3 = document.getElementById("click_me3")
-        const arr = [1, 2, 3]
-        btn.addEventListener("click", () => {
-            localStorage.setItem("btn_value", )
-            const localValue = localStorage.getItem("btn_value")
-            console.log(localValue, "local");
-        })
-        btn2.addEventListener("click", () => {
-            localStorage.setItem("btn_value", arr[1])
-            const localValue = localStorage.getItem("btn_value")
-            console.log(localValue, "local");
-        })
-        btn3.addEventListener("click", () => {
-            localStorage.setItem("btn_value", arr[2])
-            const localValue = localStorage.getItem("btn_value")
-            console.log(localValue, "local");
-        })
-        const fetchData = async (url) => {
-            try {
-                const data = await axios(`https://jsonplaceholder.typicode.com/${url}`)
-                console.log(data.data.title);
-            } catch (e) {
-                console.log("object");
-            }
-        }
-        fetchData('todos/1')
-    </script> -->
     <script type="module" src="/main.js"></script>
-</body>
+  </body>
 </html>
