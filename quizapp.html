@@ -28,48 +28,51 @@
     <meta property="twitter:image" content="/logo.png" />
   </head>
   <body>
-  <!-- =========== SIDEBAR ======== -->
-  <div
-  class="bg-white flex justify-between items-center shadow-lg sm:px-5 px-3 py-4 sticky top-0 left-0 z-50"
->
-<a href="/"
-class="font-medium sm:text-3xl text-xl font-mono text-center uppercase"
->
-sidebar
-</a>
-  <button
-    id="sidebar"
-    class="text-white font-medium px-6 py-2 rounded-xl bg-blue-700"
-  >
-    open sidebar
-  </button>
-  <div
-    id="overlay"
-    class="w-full h-full bg-black bg-opacity-70 transistion-all duration-300 opacity-0 pointer-events-none fixed left-0 top-0"
-  ></div>
-  <div
-    id="side_links"
-    class="bg-blue-700 py-4 px-2 z-40 rounded-r-xl transistion-all duration-300 fixed w-[300px] top-0 -right-[100%] h-full"
-  >
-    <div class="flex justify-between items-center mb-2 px-4">
+    <!-- =========== SIDEBAR ======== -->
+    <div
+      class="bg-white flex justify-between items-center shadow-lg sm:px-5 px-3 py-4 sticky top-0 left-0 z-50"
+    >
       <a
         href="/"
-        onclick="RemoveSidebar()"
-        class="text-decoration-none text-2xl font-mono font-medium uppercase text-white mb-0 cursor-pointer"
+        class="font-medium sm:text-3xl text-xl font-mono text-center uppercase"
       >
-        JS-PRACTICE
+        sidebar
       </a>
-      <div
-        id="close"
-        class="cursor-pointer bg-blue-700 rounded-xl text-2xl text-white"
+      <button
+        id="sidebar"
+        class="text-white font-medium px-6 py-2 rounded-xl bg-blue-700"
       >
-        &#10006;
+        open sidebar
+      </button>
+      <div
+        id="overlay"
+        class="w-full h-full bg-black bg-opacity-70 transistion-all duration-300 opacity-0 pointer-events-none fixed left-0 top-0"
+      ></div>
+      <div
+        id="side_links"
+        class="bg-blue-700 py-4 px-2 z-40 transistion-all duration-300 fixed w-[300px] top-0 -right-[100%] h-full"
+      >
+        <div class="flex justify-between items-center mb-2 px-4">
+          <a
+            href="/"
+            onclick="RemoveSidebar()"
+            class="text-decoration-none text-2xl font-mono font-medium uppercase text-white mb-0 cursor-pointer"
+          >
+            JS-PRACTICE
+          </a>
+          <div
+            id="close"
+            class="cursor-pointer bg-blue-700 rounded-xl text-2xl text-white"
+          >
+            &#10006;
+          </div>
+        </div>
+        <div
+          class="flex flex-col h-[calc(100vh-50px)] overflow-y-auto"
+          id="navlinksdata"
+        ></div>
       </div>
     </div>
-    <div class="flex flex-col h-[calc(100vh-50px)] overflow-y-auto" id="navlinksdata">
-    </div>
-  </div>
-</div>
     <!-- ============== QUIZ APP ========= -->
     <div class="flex items-center justify-center">
       <div
@@ -82,24 +85,35 @@ sidebar
         </h2>
         <div class="mb-7">
           <h2 class="font-mono font-medium text-lg mb-6" id="quizquestion"></h2>
-          <div class="flex flex-col gap-2" id="quizoptions">
-
-          </div>
+          <div class="flex flex-col gap-2" id="quizoptions"></div>
         </div>
-        <div class="flex gap-3 w-full">
-          <button onclick="prevQuestion()"
-            class="text-center py-2 border-solid border border-blue-700 font-mono text-lg font-medium rounded-lg text-blue-700 hover:text-white hover:bg-blue-700 transition-all duration-300 max-w-[140px] w-full"
+        <div class="flex gap-3 w-full overflow-x-auto">
+          <button
+            onclick="prevQuestion()"
+            class="text-center py-2 px-4 border-solid border border-blue-700 font-mono text-lg font-medium rounded-lg text-blue-700 hover:text-white hover:bg-blue-700 transition-all duration-300 max-w-[140px] w-full"
           >
             Previous
           </button>
           <button
             onclick="nextQuestion()"
-            class="text-center py-2 bg-blue-700 font-mono text-lg font-medium rounded-lg text-white max-w-[140px] w-full hover:opacity-80 transition-all duration-300"
+            class="text-center py-2 px-4 bg-blue-700 font-mono text-lg font-medium rounded-lg text-white max-w-[140px] w-full hover:opacity-80 transition-all duration-300"
           >
             Next
           </button>
-          <button onclick="submitQuiz()" id="submitButton" class="hidden text-center py-2 bg-green-500 font-mono text-lg font-medium rounded-lg text-white max-w-[140px] w-full hover:opacity-80 transition-all duration-300">Submit</button>
-          <button onclick="resetQuiz()" id="resetButton" class="hidden text-center py-2 bg-gray-500 font-mono text-lg font-medium rounded-lg text-white max-w-[140px] w-full hover:opacity-80 transition-all duration-300">Reset</button>
+          <button
+            onclick="submitQuiz()"
+            id="submitButton"
+            class="hidden text-center py-2 px-4 bg-green-500 font-mono text-lg font-medium rounded-lg text-white max-w-[140px] w-full hover:opacity-80 transition-all duration-300"
+          >
+            Submit
+          </button>
+          <button
+            onclick="resetQuiz()"
+            id="resetButton"
+            class="hidden text-center py-2 px-4 bg-gray-500 font-mono text-lg font-medium rounded-lg text-white max-w-[140px] w-full hover:opacity-80 transition-all duration-300"
+          >
+            Reset
+          </button>
         </div>
         <div id="quizResult" class="hidden mt-5"></div>
       </div>
@@ -108,47 +122,53 @@ sidebar
     <!-- ========== SCRIPT ======= -->
     <script>
       const quizData = [
-          {
-              question: "Q.1 Capital of Italy?",
-              options: ["Paris", "London", "Berlin", "Rome"],
-              answer: "Rome",
-          },
-          {
-              question: "Q.2 Where is the Taj Mahal?",
-              options: ["Agra", "Delhi", "Jaipur", "Up"],
-              answer: "Agra",
-          },
-          {
-              question: "Q.3 What is the ratio of our national flag?",
-              options: ["2:1", "4:9", "3:2", "9:2"],
-              answer: "3:2",
-          },
-          {
-              question: "Q.4 Who wrote 'Romeo and Juliet'?",
-              options: ["William Shakespeare", "Charles Dickens", "Jane Austen", "Leo Tolstoy"],
-              answer: "William Shakespeare",
-          },
-          {
-              question: "Q.5 What is the capital of France?",
-              options: ["Paris", "London", "Berlin", "Rome"],
-              answer: "Paris",
-          },
-          {
-              question: "Q.6 What is the Color of Parrot?",
-              options: ["Green", "White", "Both Of them", "None of the above"],
-              answer: "Both Of them",
-          },
-          {
-              question: "Q.7 What is the Color of Parrot?",
-              options: ["Green", "White", "Both Of them", "None of the above"],
-              answer: "Green",
-          },
-          {
-              question: "Q.8 What is the Color of Parrot?",
-              options: ["Red", "Black", "Both Of them", "None of the above"],
-              answer: "None of the above",
-          },
+        {
+          question: "Q.1 Capital of Italy?",
+          options: ["Paris", "London", "Berlin", "Rome"],
+          answer: "Rome",
+        },
+        {
+          question: "Q.2 Where is the Taj Mahal?",
+          options: ["Agra", "Delhi", "Jaipur", "Up"],
+          answer: "Agra",
+        },
+        {
+          question: "Q.3 What is the ratio of our national flag?",
+          options: ["2:1", "4:9", "3:2", "9:2"],
+          answer: "3:2",
+        },
+        {
+          question: "Q.4 Who wrote 'Romeo and Juliet'?",
+          options: [
+            "William Shakespeare",
+            "Charles Dickens",
+            "Jane Austen",
+            "Leo Tolstoy",
+          ],
+          answer: "William Shakespeare",
+        },
+        {
+          question: "Q.5 What is the capital of France?",
+          options: ["Paris", "London", "Berlin", "Rome"],
+          answer: "Paris",
+        },
+        {
+          question: "Q.6 What is the Color of Parrot?",
+          options: ["Green", "White", "Both Of them", "None of the above"],
+          answer: "Both Of them",
+        },
+        {
+          question: "Q.7 What is the Color of Parrot?",
+          options: ["Green", "White", "Both Of them", "None of the above"],
+          answer: "Green",
+        },
+        {
+          question: "Q.8 What is the Color of Parrot?",
+          options: ["Red", "Black", "Both Of them", "None of the above"],
+          answer: "None of the above",
+        },
       ];
+      // Initialize variables to track the current question, score, and selected options
       let currentQuestion = 0;
       let score = 0;
       const quizOptions = document.getElementById("quizoptions");
@@ -156,83 +176,128 @@ sidebar
       const submitButton = document.getElementById("submitButton");
       const resetButton = document.getElementById("resetButton");
       const quizResult = document.getElementById("quizResult");
-  
+      let selectedOptions = new Array(quizData.length).fill(null);
+
+      // Function to display the current question and options
       function displayQuestion() {
-          const questionData = quizData[currentQuestion];
-          document.getElementById("quizquestion").textContent = questionData.question;
-          quizOptions.innerHTML = questionData.options.map((option, index) => {
-              return `<p class="option px-3 font-mono font-medium text-lg border border-solid border-blue-700 rounded" onclick="checkAnswer(this, ${index})">${option}</p>`;
-          }).join("");
+        const questionData = quizData[currentQuestion];
+        document.getElementById("quizquestion").textContent =
+          questionData.question;
+        quizOptions.innerHTML = questionData.options
+          .map((option, index) => {
+            // Check if the option is selected for the current question
+            const isSelected = selectedOptions[currentQuestion] === index;
+            // Apply selected style if the option is selected
+            const selectedStyle = isSelected
+              ? "background-color: green; color: white;"
+              : "";
+            return `<p class="option px-3 font-mono font-medium text-lg border border-solid border-blue-700 rounded" onclick="checkAnswer(this, ${index})" style="${selectedStyle}">${option}</p>`;
+          })
+          .join("");
       }
-  
-      displayQuestion();
-  
+
+      // Function to check the selected answer for the current question
       function checkAnswer(option, index) {
-          const selectedAnswer = quizData[currentQuestion].options[index];
-          const correctAnswer = quizData[currentQuestion].answer;
-  
-          // Disable all options after selecting one
-          const options = quizOptions.querySelectorAll('.option');
-          options.forEach(opt => {
-              opt.onclick = null;
-          });
-  
-          if (selectedAnswer === correctAnswer) {
-              option.style.backgroundColor = "green";
-              option.style.color = "white";
-              score++;
-          } else {
-              option.style.backgroundColor = "red";
-              option.style.color = "white";
-              for (let i = 0; i < options.length; i++) {
-                  if (quizData[currentQuestion].options[i] === correctAnswer) {
-                      options[i].style.backgroundColor = "green";
-                      options[i].style.color = "white";
-                      break;
-                  }
-              }
+        // Check if an option is already selected for the current question
+        if (selectedOptions[currentQuestion] !== null) {
+          // If an option is already selected, return without doing anything
+          return;
+        }
+        // Record the selected option index for the current question
+        selectedOptions[currentQuestion] = index;
+        const selectedAnswer = quizData[currentQuestion].options[index];
+        const correctAnswer = quizData[currentQuestion].answer;
+
+        // Disable all options after selecting one
+        const options = quizOptions.querySelectorAll(".option");
+        options.forEach((opt) => {
+          opt.onclick = null;
+        });
+
+        // Check if the selected answer is correct or not
+        if (selectedAnswer === correctAnswer) {
+          option.style.backgroundColor = "green";
+          option.style.color = "white";
+          score++;
+        } else {
+          option.style.backgroundColor = "red";
+          option.style.color = "white";
+          // Highlight the correct answer if the selected answer is incorrect
+          for (let i = 0; i < options.length; i++) {
+            if (quizData[currentQuestion].options[i] === correctAnswer) {
+              options[i].style.backgroundColor = "green";
+              options[i].style.color = "white";
+              break;
+            }
           }
-          if (currentQuestion === quizData.length - 1) {
-              submitButton.classList.remove("hidden");
-              navigationButtons.classList.add("hidden");
-          }
+        }
+        // If it's the last question, show the submit button and hide navigation buttons
+        if (currentQuestion === quizData.length - 1) {
+          submitButton.classList.remove("hidden");
+          navigationButtons.classList.add("hidden");
+        }
       }
-  
+
+      // Function to navigate to the next question
       function nextQuestion() {
-          if (currentQuestion < quizData.length - 1) {
-              currentQuestion++;
-              displayQuestion();
-          }
-      }
-  
-      function prevQuestion() {
-          if (currentQuestion > 0) {
-              currentQuestion--;
-              displayQuestion();
-          }
-      }
-  
-      function submitQuiz() {
-          const totalQuestions = quizData.length;
-          const incorrectAnswers = totalQuestions - score;
-          const resultText = `You answered ${score} questions correctly out of ${totalQuestions}. ${incorrectAnswers} questions were answered incorrectly.`;
-          quizResult.textContent = resultText;
-          quizResult.classList.remove("hidden");
-          submitButton.disabled = true;
-          resetButton.classList.remove("hidden");
-      }
-  
-      function resetQuiz() {
-          currentQuestion = 0;
-          score = 0;
+        if (currentQuestion < quizData.length - 1) {
+          currentQuestion++;
           displayQuestion();
-          quizResult.classList.add("hidden");
-          submitButton.classList.add("hidden");
-          resetButton.classList.add("hidden");
-          submitButton.disabled = false;
+        }
       }
-  </script>
-  
+
+      // Function to navigate to the previous question
+      function prevQuestion() {
+        if (currentQuestion > 0) {
+          currentQuestion--;
+          displayQuestion();
+          // Highlight the previously selected option if any
+          const selectedIndex = selectedOptions[currentQuestion];
+          if (selectedIndex !== null) {
+            const options = quizOptions.querySelectorAll(".option");
+            const correctIndex = quizData[currentQuestion].options.indexOf(
+              quizData[currentQuestion].answer
+            );
+            if (selectedIndex !== correctIndex) {
+              options[selectedIndex].style.backgroundColor = "red";
+              options[selectedIndex].style.color = "white";
+            } else {
+              options[selectedIndex].style.backgroundColor = "green";
+              options[selectedIndex].style.color = "white";
+            }
+            options[correctIndex].style.backgroundColor = "green";
+            options[correctIndex].style.color = "white";
+          }
+        }
+      }
+
+      // Function to submit the quiz and display the result
+      function submitQuiz() {
+        const totalQuestions = quizData.length;
+        const incorrectAnswers = totalQuestions - score;
+        const resultText = `You answered ${score} questions correctly out of ${totalQuestions}. ${incorrectAnswers} questions were answered incorrectly.`;
+        quizResult.textContent = resultText;
+        quizResult.classList.remove("hidden");
+        submitButton.disabled = true;
+        resetButton.classList.remove("hidden");
+      }
+
+      // Function to reset the quiz and start again
+      function resetQuiz() {
+        currentQuestion = 0;
+        score = 0;
+        selectedOptions.fill(null);
+        displayQuestion();
+        quizResult.classList.add("hidden");
+        submitButton.classList.add("hidden");
+        resetButton.classList.add("hidden");
+        submitButton.disabled = false;
+      }
+
+      // Initial display of the first question
+      displayQuestion();
+    </script>
+
     <script type="module" src="/main.js"></script>
   </body>
 </html>

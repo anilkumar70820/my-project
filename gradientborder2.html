@@ -41,11 +41,10 @@
           linear-gradient(#fff 0 0);
         -webkit-mask-composite: xor;
         mask-composite: exclude;
-       
       }
       /* ====================== */
-      
-      #box:hover{
+
+      #box:hover {
         background: linear-gradient(
           93.95deg,
           #01b4ca 2.06%,
@@ -102,51 +101,53 @@
         }
       }
       /* ================= 3 ============ */
-      
     </style>
   </head>
   <body>
     <div
-    class="bg-white flex justify-between items-center shadow-lg sm:px-5 px-3 py-4 sticky top-0 left-0 z-50"
-  >
-  <a href="/"
-  class="font-medium sm:text-3xl text-xl font-mono text-center uppercase"
->
-  sidebar
-</a>
-    <button
-      id="sidebar"
-      class="text-white font-medium px-6 py-2 rounded-xl bg-blue-700"
+      class="bg-white flex justify-between items-center shadow-lg sm:px-5 px-3 py-4 sticky top-0 left-0 z-50"
     >
-      open sidebar
-    </button>
-    <div
-      id="overlay"
-      class="w-full h-full bg-black bg-opacity-70 transistion-all duration-300 opacity-0 pointer-events-none fixed left-0 top-0"
-    ></div>
-    <div
-      id="side_links"
-      class="bg-blue-700 py-4 px-2 z-40 rounded-r-xl transistion-all duration-300 fixed w-[300px] top-0 -right-[100%] h-full"
-    >
-      <div class="flex justify-between items-center mb-2 px-4">
-        <a
-          href="/"
-          onclick="RemoveSidebar()"
-          class="text-decoration-none text-2xl font-mono font-medium uppercase text-white mb-0 cursor-pointer"
-        >
-          JS-PRACTICE
-        </a>
-        <div
-          id="close"
-          class="cursor-pointer bg-blue-700 rounded-xl text-2xl text-white"
-        >
-          &#10006;
+      <a
+        href="/"
+        class="font-medium sm:text-3xl text-xl font-mono text-center uppercase"
+      >
+        sidebar
+      </a>
+      <button
+        id="sidebar"
+        class="text-white font-medium px-6 py-2 rounded-xl bg-blue-700"
+      >
+        open sidebar
+      </button>
+      <div
+        id="overlay"
+        class="w-full h-full bg-black bg-opacity-70 transistion-all duration-300 opacity-0 pointer-events-none fixed left-0 top-0"
+      ></div>
+      <div
+        id="side_links"
+        class="bg-blue-700 py-4 px-2 z-40 transistion-all duration-300 fixed w-[300px] top-0 -right-[100%] h-full"
+      >
+        <div class="flex justify-between items-center mb-2 px-4">
+          <a
+            href="/"
+            onclick="RemoveSidebar()"
+            class="text-decoration-none text-2xl font-mono font-medium uppercase text-white mb-0 cursor-pointer"
+          >
+            JS-PRACTICE
+          </a>
+          <div
+            id="close"
+            class="cursor-pointer bg-blue-700 rounded-xl text-2xl text-white"
+          >
+            &#10006;
+          </div>
         </div>
-      </div>
-      <div class="flex flex-col h-[calc(100vh-50px)] overflow-y-auto" id="navlinksdata">
+        <div
+          class="flex flex-col h-[calc(100vh-50px)] overflow-y-auto"
+          id="navlinksdata"
+        ></div>
       </div>
     </div>
-  </div>
     <div class="container mx-auto mt-5 px-3">
       <button
         class="box cursor-pointer px-8 py-4 bg-green-950 relative rounded-xl after:rounded-xl after:absolute after:h-full after:w-full after:left-0 after:top-0 after:border-[3px] after:border-solid after:border-transparent"
@@ -156,7 +157,10 @@
         </span>
       </button>
       <!-- ========== -->
-      <button class="gradient-border mt-5 px-8 py-[10px] text-white font-medium text-xl ms-5 transition-all duration-500" id="box">
+      <button
+        class="gradient-border mt-5 px-8 py-[10px] text-white font-medium text-xl ms-5 transition-all duration-500"
+        id="box"
+      >
         Animated
       </button>
       <!-- =============== -->

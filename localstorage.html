@@ -28,10 +28,10 @@
     <meta property="twitter:image" content="/logo.png" />
     <style>
       .tab button.active {
-  background-color: white;
-  color: black;
-  border: 1px solid blue;
-}
+        background-color: white;
+        color: black;
+        border: 1px solid blue;
+      }
     </style>
   </head>
   <body>
@@ -57,7 +57,7 @@
       ></div>
       <div
         id="side_links"
-        class="bg-blue-700 py-4 px-2 z-40 rounded-r-xl transistion-all duration-300 fixed w-[300px] top-0 -right-[100%] h-full"
+        class="bg-blue-700 py-4 px-2 z-40 transistion-all duration-300 fixed w-[300px] top-0 -right-[100%] h-full"
       >
         <div class="flex justify-between items-center mb-2 px-4">
           <a
@@ -102,30 +102,65 @@
         </button>
       </div>
       <div class="my-5">
-        <p class="text-2xl font-medium font-mono text-center" id="localdata"></p>
+        <p
+          class="text-2xl font-medium font-mono text-center"
+          id="localdata"
+        ></p>
       </div>
 
       <!-- ============ LOCALSTORAGE TABS ================ -->
-      <h2 class="text-3xl font-medium font-mono capitalize text-center mb-5">this is the active tabs from local storage</h2>
+      <h2 class="text-3xl font-medium font-mono capitalize text-center mb-5">
+        this is the active tabs from local storage
+      </h2>
       <div>
         <div class="tab mb-5 flex justify-center gap-4">
-          <button class="tablinks px-8 py-4 rounded-xl border border-transparent border-solid hover:border-blue-700 bg-blue-700 hover:bg-white transition-all duration-500 text-white hover:text-black font-semibold text-xl font-mono" onclick="openCity(event, 'London')">London</button>
-          <button class="tablinks px-8 py-4 rounded-xl border border-transparent border-solid hover:border-blue-700 bg-blue-700 hover:bg-white transition-all duration-500 text-white hover:text-black font-semibold text-xl font-mono" onclick="openCity(event, 'Paris')">Paris</button>
-          <button class="tablinks px-8 py-4 rounded-xl border border-transparent border-solid hover:border-blue-700 bg-blue-700 hover:bg-white transition-all duration-500 text-white hover:text-black font-semibold text-xl font-mono" onclick="openCity(event, 'Tokyo')">Tokyo</button>
+          <button
+            class="tablinks px-8 py-4 rounded-xl border border-transparent border-solid hover:border-blue-700 bg-blue-700 hover:bg-white transition-all duration-500 text-white hover:text-black font-semibold text-xl font-mono"
+            onclick="openCity(event, 'London')"
+          >
+            London
+          </button>
+          <button
+            class="tablinks px-8 py-4 rounded-xl border border-transparent border-solid hover:border-blue-700 bg-blue-700 hover:bg-white transition-all duration-500 text-white hover:text-black font-semibold text-xl font-mono"
+            onclick="openCity(event, 'Paris')"
+          >
+            Paris
+          </button>
+          <button
+            class="tablinks px-8 py-4 rounded-xl border border-transparent border-solid hover:border-blue-700 bg-blue-700 hover:bg-white transition-all duration-500 text-white hover:text-black font-semibold text-xl font-mono"
+            onclick="openCity(event, 'Tokyo')"
+          >
+            Tokyo
+          </button>
         </div>
-        <div id="London" class="tabcontent max-w-[400px] p-10 shadow-xl rounded-xl border border-solid border-blue-700 mx-auto">
+        <div
+          id="London"
+          class="tabcontent max-w-[400px] p-10 shadow-xl rounded-xl border border-solid border-blue-700 mx-auto"
+        >
           <h3 class="text-4xl font-bold font-mono">London</h3>
-          <p class="text-2xl font-medium font-mono">London is the capital city of England.</p>
+          <p class="text-2xl font-medium font-mono">
+            London is the capital city of England.
+          </p>
         </div>
-        
-        <div id="Paris" class="tabcontent hidden max-w-[400px] p-10 shadow-xl rounded-xl border border-solid border-blue-700 mx-auto">
+
+        <div
+          id="Paris"
+          class="tabcontent hidden max-w-[400px] p-10 shadow-xl rounded-xl border border-solid border-blue-700 mx-auto"
+        >
           <h3 class="text-4xl font-bold font-mono">Paris</h3>
-          <p class="text-2xl font-medium font-mono">Paris is the capital of France.</p> 
+          <p class="text-2xl font-medium font-mono">
+            Paris is the capital of France.
+          </p>
         </div>
-        
-        <div id="Tokyo" class="tabcontent hidden max-w-[400px] p-10 shadow-xl rounded-xl border border-solid border-blue-700 mx-auto">
+
+        <div
+          id="Tokyo"
+          class="tabcontent hidden max-w-[400px] p-10 shadow-xl rounded-xl border border-solid border-blue-700 mx-auto"
+        >
           <h3 class="text-4xl font-bold font-mono">Tokyo</h3>
-          <p class="text-2xl font-medium font-mono">Tokyo is the capital of Japan.</p>
+          <p class="text-2xl font-medium font-mono">
+            Tokyo is the capital of Japan.
+          </p>
         </div>
       </div>
     </div>
@@ -146,7 +181,7 @@
         evt.currentTarget.classList.add("active"); // Add active class to the clicked tab button
         localStorage.setItem("activetab", cityName); // Save active tab to local storage
       }
-    
+
       document.addEventListener("DOMContentLoaded", function () {
         const getTab = localStorage.getItem("activetab");
         const tablinks = document.getElementsByClassName("tablinks");
@@ -163,7 +198,7 @@
         }
       });
     </script>
-    
+
     <!-- ============================================== -->
     <script>
       const btn1 = document.getElementById("btn1");
@@ -185,12 +220,12 @@
         const Delete = localStorage.setItem("btn1", hide);
       });
       document.addEventListener("DOMContentLoaded", function () {
-    const getStorage = localStorage.getItem("btn1");
-    const localdata = document.getElementById("localdata");
-    if (getStorage) {
-      localdata.innerHTML = getStorage;
-    }
-  });
+        const getStorage = localStorage.getItem("btn1");
+        const localdata = document.getElementById("localdata");
+        if (getStorage) {
+          localdata.innerHTML = getStorage;
+        }
+      });
     </script>
   </body>
 </html>
