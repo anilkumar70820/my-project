@@ -20,6 +20,7 @@ export default defineConfig({
         localstorage: resolve(__dirname, "localstorage.html"),
         gradientborder2: resolve(__dirname, "gradientborder2.html"),
         paramstabs: resolve(__dirname, "paramstabs.html"),
+        quizapp: resolve(__dirname, "quizapp.html"),
       },
     },
   },
