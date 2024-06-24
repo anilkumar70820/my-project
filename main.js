@@ -62,6 +62,10 @@ const navLinksArr = [
     link: "params tabs",
     href: "/paramstabs",
   },
+  {
+    link: "gsap slide cards",
+    href: "/gsap",
+  },
 ];
 
 var sidebar = document.getElementById("sidebar");

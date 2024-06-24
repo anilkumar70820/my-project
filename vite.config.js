@@ -21,6 +21,7 @@ export default defineConfig({
         gradientborder2: resolve(__dirname, "gradientborder2.html"),
         paramstabs: resolve(__dirname, "paramstabs.html"),
         quizapp: resolve(__dirname, "quizapp.html"),
+        quizapp: resolve(__dirname, "gsap.html"),
       },
     },
   },
