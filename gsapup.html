@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>COUNTER</title>
+    <title>GSAP</title>
     <meta name="title" content="Java Script Basics Practice" />
     <meta
       name="description"
@@ -27,7 +27,8 @@
     />
     <meta property="twitter:image" content="/logo.png" />
   </head>
-  <body>
+  <body class="overflow-x-hidden">
+    <!-- ============ SIDEBAR ============ -->
     <div
       class="bg-white flex justify-between items-center shadow-lg sm:px-5 px-3 py-4 sticky top-0 left-0 z-50"
     >
@@ -54,6 +55,7 @@
         <div class="flex justify-between items-center mb-2 px-4">
           <a
             href="/"
+            
             class="text-decoration-none text-2xl font-mono font-medium uppercase text-white mb-0 cursor-pointer"
           >
             JS-PRACTICE
@@ -71,56 +73,69 @@
         ></div>
       </div>
     </div>
-    <div class="flex items-center justify-center">
-      <div
-        class="bg-white shadow-xl rounded-xl flex justify-center items-center flex-col gap-5 p-10"
-      >
-        <h2 class="font-medium text-3xl font-mono">On Click</h2>
-        <p class="font-medium text-3xl font-mono" id="number">0</p>
-        <button
-          id="addButton"
-          class="font-mono text-white text-2xl bg-blue-700 rounded-xl px-4 py-2"
-        >
-          Add Number
-        </button>
-        <button
-          id="lessButton"
-          class="hidden font-mono text-white text-2xl bg-blue-700 rounded-xl px-4 py-2"
-        >
-          Subtract Number
-        </button>
+    <!-- ========= GSAP slider ============== -->
+    <div class="container max-w-[1140px] overflow-hidden mx-auto px-4">
+      <div class="min-h-screen"></div>
+        <div class="bg-green-400 mb-5 w-full h-[400px] layer_start"></div>
+        <div
+          class="bg-red-400 mb-5 w-full h-[400px] layer_one"
+        ></div>
+        <div
+          class="bg-black mb-5 w-full h-[400px] layer_two"
+        ></div>
+        <div
+          class="bg-orange-400 mb-5 w-full h-[400px] layer_three"
+        ></div>
       </div>
+      <div class="min-h-screen bg-white mb-5 w-full"></div>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
     <script type="module" src="/main.js"></script>
     <script>
-      const btn = document.getElementById("addButton");
-      const number = document.getElementById("number");
-      const lessNumber = document.getElementById("lessButton");
-      var a = 0;
-      btn.addEventListener("click", function () {
-        if (a <= 19) {
-          a = a + 1;
-          number.innerHTML = a;
-        }
-        if (a <= 19) {
-          btn.innerHTML = "Add Number";
-          lessNumber.style.display = "none";
-        }
-        if (a == 20) {
-          btn.style.display = "none";
-          lessNumber.style.display = "block";
-        }
+      gsap.registerPlugin(ScrollTrigger);
+
+      const layerLeft = gsap.timeline({
+        scrollTrigger: {
+          trigger: ".layer_start",
+          pin: true,
+          scrub: 2,
+          start: "top 20%",
+          end: "+=359% center",
+          pinSpacing: false,
+          markers: false,
+        },
       });
-      lessNumber.addEventListener("click", function () {
-        if (a > 0) {
-          a = a - 1;
-          number.innerHTML = a;
-        }
-        if (a == 0) {
-          btn.style.display = "block";
-          lessNumber.style.display = "none";
-        }
-      });
+      layerLeft
+        .to(".layer_one", {
+            scrollTrigger: {
+          trigger: ".layer_one",
+          pin: true,
+          pinSpacing: false,
+          start: "top 20%",
+          end: "+=254% center",
+          markers: true,
+            }
+        })
+        .to(".layer_two", {
+            scrollTrigger: {
+          trigger: ".layer_two",
+          pin: true,
+          pinSpacing: false,
+          start: "top 20%",
+          end: "+=148.8% center",
+            }
+        })
+        .to(".layer_three", {
+            scrollTrigger: {
+          trigger: ".layer_three",
+          pin: true,
+          pinSpacing: false,
+          start: "top 20%",
+          end: "bottom bottom",
+            }
+        })
     </script>
   </body>
 </html>

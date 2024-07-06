@@ -1,6 +1,6 @@
 import "./style.css";
 var navlinksdata = document.getElementById("navlinksdata");
-navlinksdata.style.paddingBottom="20px"
+navlinksdata.style.paddingBottom = "20px";
 const navLinksArr = [
   {
     link: "select",
@@ -66,19 +66,37 @@ const navLinksArr = [
     link: "gsap slide cards",
     href: "/gsap",
   },
+  {
+    link: "gsap slider",
+    href: "/gsapslider",
+  },
+  {
+    link: "gsap overlay",
+    href: "/gsapsoverlay",
+  },
+  {
+    link: "gsap down to up overlay",
+    href: "/gsapup",
+  },
+  {
+    link: "gsap scale",
+    href: "/gsapscale",
+  },
 ];
 
 var sidebar = document.getElementById("sidebar");
 var side_links = document.getElementById("side_links");
 var closesidebar = document.getElementById("close");
 var sideoverlay = document.getElementById("overlay");
-navlinksdata.innerHTML = navLinksArr.map((obj,i) => {
-  return`<a key="${i}"
-  onclick="RemoveSidebar()"
+navlinksdata.innerHTML = navLinksArr
+  .map((obj, i) => {
+    return `<a key="${i}"
+  
   class="text-decoration-none hover:bg-white hover:text-black px-4 py-2 transition-all duration-300 rounded-lg text-xl font-mono font-medium uppercase text-white"
   href="${obj.href}"
   >${obj.link}</a>`;
-}).join("");
+  })
+  .join("");
 sidebar.addEventListener("click", function () {
   side_links.classList.add("!right-0");
   sideoverlay.classList.add("opacity-100");
@@ -97,9 +115,3 @@ sideoverlay.addEventListener("click", function () {
   sideoverlay.classList.add("pointer-events-none");
   document.body.classList.remove("overflow-hidden");
 });
-function RemoveSidebar() {
-  side_links.classList.remove("!right-0");
-  sideoverlay.classList.remove("opacity-100");
-  sideoverlay.classList.add("pointer-events-none");
-  document.body.classList.remove("overflow-hidden");
-}

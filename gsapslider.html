@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/logo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GSAP</title>
+    <meta name="title" content="Java Script Basics Practice" />
+    <meta
+      name="description"
+      content="Java Script Basics Practice Like Counter, Event Listeners, Calculator"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://custom-tabs-daebf.web.app/" />
+    <meta property="og:title" content="Java Script Basics Practice" />
+    <meta
+      property="og:description"
+      content="Java Script Basics Practice Like Counter, Event Listeners, Calculator"
+    />
+    <meta property="og:image" content="/logo.png" />
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://custom-tabs-daebf.web.app/" />
+    <meta property="twitter:title" content="Java Script Basics Practice" />
+    <meta
+      property="twitter:description"
+      content="Java Script Basics Practice Like Counter, Event Listeners, Calculator"
+    />
+    <meta property="twitter:image" content="/logo.png" />
+  </head>
+  <body class="overflow-x-hidden">
+    <!-- ============ SIDEBAR ============ -->
+    <div
+      class="bg-white flex justify-between items-center shadow-lg sm:px-5 px-3 py-4 sticky top-0 left-0 z-50"
+    >
+      <a
+        href="/"
+        class="font-medium sm:text-3xl text-xl font-mono text-center uppercase"
+      >
+        sidebar
+      </a>
+      <button
+        id="sidebar"
+        class="text-white font-medium px-6 py-2 rounded-xl bg-blue-700"
+      >
+        open sidebar
+      </button>
+      <div
+        id="overlay"
+        class="w-full h-full bg-black bg-opacity-70 transistion-all duration-300 opacity-0 pointer-events-none fixed left-0 top-0"
+      ></div>
+      <div
+        id="side_links"
+        class="bg-blue-700 py-4 px-2 z-40 transistion-all duration-300 fixed w-[300px] top-0 -right-[100%] h-full"
+      >
+        <div class="flex justify-between items-center mb-2 px-4">
+          <a
+            href="/"
+            class="text-decoration-none text-2xl font-mono font-medium uppercase text-white mb-0 cursor-pointer"
+          >
+            JS-PRACTICE
+          </a>
+          <div
+            id="close"
+            class="cursor-pointer bg-blue-700 rounded-xl text-2xl text-white"
+          >
+            &#10006;
+          </div>
+        </div>
+        <div
+          class="flex flex-col h-[calc(100vh-50px)] overflow-y-auto"
+          id="navlinksdata"
+        ></div>
+      </div>
+    </div>
+    <!-- ========= GSAP slider ============== -->
+    <div class="container max-w-[1140px] overflow-x-hidden mx-auto px-4">
+      <div class="min-h-screen"></div>
+      <div
+        class="sm:min-h-screen h-[400px] flex sm:block gap-5 sm:gap-0 overflow-hidden"
+        id="slider"
+      >
+        <div class="relative sm:h-10 mb-10 sm:w-auto w-32 h-full">
+          <div
+            class="flex items-center sm:flex-row flex-col justify-between h-full w-full sm:absolute top-0 left-0"
+          >
+            <button
+              class="sm:px-6 sm:py-2 flex items-center font-mono font-semibold text-xl text-white bg-blue-400 sm:rounded-lg rounded-full px-6 py-4 shadow-[150px_0px_0_0_#4ade80_inset]"
+            >
+              <span class="sm:flex hidden">Step</span> 1
+            </button>
+            <button
+              class="sm:px-6 sm:py-2 flex items-center font-mono font-semibold text-xl text-white bg-blue-400 sm:rounded-lg rounded-full px-6 py-4 step_2"
+            >
+              <span class="sm:flex hidden">Step</span> 2
+            </button>
+            <button
+              class="sm:px-6 sm:py-2 flex items-center font-mono font-semibold text-xl text-white bg-blue-400 sm:rounded-lg rounded-full px-6 py-4 step_3"
+            >
+              <span class="sm:flex hidden">Step</span> 3
+            </button>
+            <button
+              class="sm:px-6 sm:py-2 flex items-center font-mono font-semibold text-xl text-white bg-blue-400 sm:rounded-lg rounded-full px-6 py-4 step_4"
+            >
+              <span class="sm:flex hidden">Step</span> 4
+            </button>
+          </div>
+          <div
+            class="absolute left-[50%] top-0 -translate-x-[50%] sm:translate-x-0 sm:top-[50%] sm:-translate-y-[50%] sm:left-0 bg-slate-300 sm:w-full sm:h-1 h-full w-1 -z-10"
+          ></div>
+          <div
+            id="line"
+            class="absolute left-[50%] top-0 -translate-x-[50%] sm:translate-x-0 sm:top-[50%] sm:-translate-y-[50%] sm:left-0 bg-orange-300 sm:w-0 sm:h-1 w-1 h-0 -z-[9]"
+          ></div>
+        </div>
+        <div
+          class="flex sm:flex-row flex-col items-center md:gap-24 gap-6"
+          id="slide"
+        >
+          <div
+            class="bg-green-400 lg:min-w-[1000px] md:min-w-[700px] sm:min-w-[600px] min-w-[300px] max-w-full w-full min-h-[400px]"
+          ></div>
+          <div
+            class="bg-red-400 lg:min-w-[1000px] md:min-w-[700px] sm:min-w-[600px] min-w-[300px] max-w-full w-full min-h-[400px]"
+          ></div>
+          <div
+            class="bg-black lg:min-w-[1000px] md:min-w-[700px] sm:min-w-[600px] min-w-[300px] max-w-full w-full min-h-[400px]"
+          ></div>
+          <div
+            class="bg-orange-400 lg:min-w-[1000px] md:min-w-[700px] sm:min-w-[600px] min-w-[300px] max-w-full w-full min-h-[400px]"
+          ></div>
+        </div>
+      </div>
+      <div
+        class="min-h-screen bg-white lg:min-w-[1000px] md:min-w-[700px] sm:min-w-[600px] min-w-[300px] max-w-full w-full"
+      ></div>
+      <div
+        class="min-h-screen bg-white lg:min-w-[1000px] md:min-w-[700px] sm:min-w-[600px] min-w-[300px] max-w-full w-full"
+      ></div>
+      <div
+        class="min-h-screen bg-white lg:min-w-[1000px] md:min-w-[700px] sm:min-w-[600px] min-w-[300px] max-w-full w-full"
+      ></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <script type="module" src="/main.js"></script>
+    <script>
+      gsap.registerPlugin(ScrollTrigger);
+      let screen = gsap.matchMedia();
+
+      screen.add("(min-width: 1280px) and (max-width: 1536px)", () => {
+        console.log("1280px breakpoint reached");
+        const slider = gsap.timeline({
+          scrollTrigger: {
+            trigger: "#slider",
+            pin: true,
+            scrub: 2,
+            start: "0% 15%",
+            end: "bottom bottom",
+            pinSpacing: false,
+            markers: true,
+          },
+        });
+        slider.fromTo("#slide", { translateX: "0%" }, { translateX: "-295%" });
+        slider.fromTo(
+          "#line",
+          { width: "0" },
+          { width: "100%", duration: 0.5 },
+          0
+        );
+        slider.fromTo(
+          ".step_2",
+          { boxShadow: "0px 0px 0 0 #f87171 inset" },
+          { boxShadow: "150px 0px 0 0 #f87171 inset", duration: "0.06" },
+          0.085
+        );
+        slider.fromTo(
+          ".step_3",
+          { boxShadow: "0px 0px 0 0 black inset" },
+          { boxShadow: "150px 0px 0 0 black inset", duration: "0.06" },
+          0.19
+        );
+        slider.fromTo(
+          ".step_4",
+          { boxShadow: "0px 0px 0 0 #fb923c inset" },
+          { boxShadow: "150px 0px 0 0 orange inset", duration: "0.06" },
+          0.35
+        );
+      });
+
+      screen.add("(min-width: 1024px) and (max-width: 1279.98px)", () => {
+        console.log("1024px breakpoint reached");
+        const slider = gsap.timeline({
+          scrollTrigger: {
+            trigger: "#slider",
+            pin: true,
+            scrub: 2,
+            start: "0% 15%",
+            end: "bottom bottom",
+            pinSpacing: false,
+            markers: true,
+          },
+        });
+        slider.fromTo("#slide", { translateX: "0%" }, { translateX: "-332%" });
+        slider.fromTo(
+          "#line",
+          { width: "0" },
+          { width: "100%", duration: 0.5 },
+          0
+        );
+        slider.fromTo(
+          ".step_2",
+          { boxShadow: "0px 0px 0 0 #f87171 inset" },
+          { boxShadow: "150px 0px 0 0 #f87171 inset", duration: "0.06" },
+          0.081
+        );
+        slider.fromTo(
+          ".step_3",
+          { boxShadow: "0px 0px 0 0 black inset" },
+          { boxShadow: "150px 0px 0 0 black inset", duration: "0.06" },
+          0.19
+        );
+        slider.fromTo(
+          ".step_4",
+          { boxShadow: "0px 0px 0 0 #fb923c inset" },
+          { boxShadow: "150px 0px 0 0 orange inset", duration: "0.06" },
+          0.34
+        );
+      });
+
+      screen.add("(min-width: 768px) and (max-width: 1023.98px)", () => {
+        console.log("768px breakpoint reached");
+        const slider = gsap.timeline({
+          scrollTrigger: {
+            trigger: "#slider",
+            pin: true,
+            scrub: 2,
+            start: "0% 15%",
+            end: "bottom bottom",
+            pinSpacing: false,
+            markers: true,
+          },
+        });
+        slider.fromTo("#slide", { translateX: "0%" }, { translateX: "-323%" });
+        slider.fromTo(
+          "#line",
+          { width: "0" },
+          { width: "100%", duration: 0.5 },
+          0.01
+        );
+        slider.fromTo(
+          ".step_2",
+          { boxShadow: "0px 0px 0 0 #f87171 inset" },
+          { boxShadow: "150px 0px 0 0 #f87171 inset", duration: "0.03" },
+          0.089
+        );
+        slider.fromTo(
+          ".step_3",
+          { boxShadow: "0px 0px 0 0 black inset" },
+          { boxShadow: "150px 0px 0 0 black inset", duration: "0.06" },
+          0.19
+        );
+        slider.fromTo(
+          ".step_4",
+          { boxShadow: "0px 0px 0 0 #fb923c inset" },
+          { boxShadow: "150px 0px 0 0 orange inset", duration: "0.26" },
+          0.32
+        );
+      });
+
+      screen.add("(min-width: 640px) and (max-width: 767.98px)", () => {
+        console.log("640px breakpoint reached");
+        const slider = gsap.timeline({
+          scrollTrigger: {
+            trigger: "#slider",
+            pin: true,
+            scrub: 2,
+            start: "0% 15%",
+            end: "bottom bottom",
+            pinSpacing: false,
+            markers: true,
+          },
+        });
+        slider.fromTo("#slide", { translateX: "0%" }, { translateX: "-271%" });
+        slider.fromTo(
+          "#line",
+          { width: "0" },
+          { width: "100%", duration: 0.5 },
+          0
+        );
+        slider.fromTo(
+          ".step_2",
+          { boxShadow: "0px 0px 0 0 #f87171 inset" },
+          { boxShadow: "150px 0px 0 0 #f87171 inset", duration: "0.06" },
+          0.08
+        );
+        slider.fromTo(
+          ".step_3",
+          { boxShadow: "0px 0px 0 0 black inset" },
+          { boxShadow: "150px 0px 0 0 black inset", duration: "0.06" },
+          0.18
+        );
+        slider.fromTo(
+          ".step_4",
+          { boxShadow: "0px 0px 0 0 #fb923c inset" },
+          { boxShadow: "150px 0px 0 0 orange inset", duration: "0.06" },
+          0.35
+        );
+      });
+      screen.add("(min-width: 320px) and (max-width: 639.98px)", () => {
+        const slider = gsap.timeline({
+          scrollTrigger: {
+            trigger: "#slider",
+            pin: true,
+            scrub: 2,
+            start: "0% 15%",
+            end: "+=1200% bottom",
+            pinSpacing: false,
+            markers: true,
+          },
+        });
+        slider.fromTo("#slide", { translateY: "0%" }, { translateY: "-315%" });
+        slider.fromTo(
+          "#line",
+          { height: "0" },
+          { height: "90%", duration: 0.5 },
+          0
+        );
+        slider.fromTo(
+          ".step_2",
+          { boxShadow: "0px 0px 0 0 #f87171 inset" },
+          { boxShadow: "0 150px 0 0 #f87171 inset", duration: "0.06" },
+          0.089
+        );
+        slider.fromTo(
+          ".step_3",
+          { boxShadow: "0px 0px 0 0 black inset" },
+          { boxShadow: "0 150px 0 0 black inset", duration: "0.06" },
+          0.21
+        );
+        slider.fromTo(
+          ".step_4",
+          { boxShadow: "0px 0px 0 0 #fb923c inset" },
+          { boxShadow: "0 150px 0 0 #fb923c inset", duration: "0.46" },
+          0.38
+        );
+      });
+    </script>
+  </body>
+</html>
