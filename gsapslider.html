@@ -117,17 +117,21 @@
           id="slide"
         >
           <div
-            class="bg-green-400 lg:min-w-[1000px] md:min-w-[700px] sm:min-w-[600px] min-w-[300px] max-w-full w-full min-h-[400px]"
-          ></div>
+            class="bg-green-400 min-w-full sm:min-h-[400px] px-5"
+          >THIS IS FIRST DIV
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis ipsa praesentium inventore suscipit fugit! Quibusdam saepe eveniet, pariatur explicabo impedit enim deserunt, ex eos modi voluptatem similique sapiente qui accusamus vitae, nemo ut blanditiis optio quos molestias deleniti eum placeat soluta? Voluptatibus soluta quia culpa explicabo natus ipsam dignissimos praesentium non voluptas vel? Odit, assumenda unde! Odit ullam, itaque tempore alias commodi voluptate voluptatum suscipit, laborum asperiores quos, repellat quibusdam repudiandae. Nesciunt asperiores fugit tempore, perferendis reiciendis accusantium atque, maxime aut earum animi voluptate omnis dignissimos consectetur ipsa, quam doloremque hic veritatis pariatur. Nesciunt sapiente fugit eos praesentium, doloribus facere!</div>
           <div
-            class="bg-red-400 lg:min-w-[1000px] md:min-w-[700px] sm:min-w-[600px] min-w-[300px] max-w-full w-full min-h-[400px]"
-          ></div>
+            class="bg-red-400 min-w-full sm:min-h-[400px] px-5"
+          >THIS IS SECOND DIV
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis ipsa praesentium inventore suscipit fugit! Quibusdam saepe eveniet, pariatur explicabo impedit enim deserunt, ex eos modi voluptatem similique sapiente qui accusamus vitae, nemo ut blanditiis optio quos molestias deleniti eum placeat soluta? Voluptatibus soluta quia culpa explicabo natus ipsam dignissimos praesentium non voluptas vel? Odit, assumenda unde! Odit ullam, itaque tempore alias commodi voluptate voluptatum suscipit, laborum asperiores quos, repellat quibusdam repudiandae. Nesciunt asperiores fugit tempore, perferendis reiciendis accusantium atque, maxime aut earum animi voluptate omnis dignissimos consectetur ipsa, quam doloremque hic veritatis pariatur. Nesciunt sapiente fugit eos praesentium, doloribus facere!</div>
           <div
-            class="bg-black lg:min-w-[1000px] md:min-w-[700px] sm:min-w-[600px] min-w-[300px] max-w-full w-full min-h-[400px]"
-          ></div>
+            class="bg-black text-white min-w-full sm:min-h-[400px] px-5"
+          >THIS IS FORTH DIV
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis ipsa praesentium inventore suscipit fugit! Quibusdam saepe eveniet, pariatur explicabo impedit enim deserunt, ex eos modi voluptatem similique sapiente qui accusamus vitae, nemo ut blanditiis optio quos molestias deleniti eum placeat soluta? Voluptatibus soluta quia culpa explicabo natus ipsam dignissimos praesentium non voluptas vel? Odit, assumenda unde! Odit ullam, itaque tempore alias commodi voluptate voluptatum suscipit, laborum asperiores quos, repellat quibusdam repudiandae. Nesciunt asperiores fugit tempore, perferendis reiciendis accusantium atque, maxime aut earum animi voluptate omnis dignissimos consectetur ipsa, quam doloremque hic veritatis pariatur. Nesciunt sapiente fugit eos praesentium, doloribus facere!</div>
           <div
-            class="bg-orange-400 lg:min-w-[1000px] md:min-w-[700px] sm:min-w-[600px] min-w-[300px] max-w-full w-full min-h-[400px]"
-          ></div>
+            class="bg-orange-400 min-w-full sm:min-h-[400px] px-5"
+          >THIS IS FIFTH DIV
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis ipsa praesentium inventore suscipit fugit! Quibusdam saepe eveniet, pariatur explicabo impedit enim deserunt, ex eos modi voluptatem similique sapiente qui accusamus vitae, nemo ut blanditiis optio quos molestias deleniti eum placeat soluta? Voluptatibus soluta quia culpa explicabo natus ipsam dignissimos praesentium non voluptas vel? Odit, assumenda unde! Odit ullam, itaque tempore alias commodi voluptate voluptatum suscipit, laborum asperiores quos, repellat quibusdam repudiandae. Nesciunt asperiores fugit tempore, perferendis reiciendis accusantium atque, maxime aut earum animi voluptate omnis dignissimos consectetur ipsa, quam doloremque hic veritatis pariatur. Nesciunt sapiente fugit eos praesentium, doloribus facere!</div>
         </div>
       </div>
       <div
@@ -147,8 +151,8 @@
     <script>
       gsap.registerPlugin(ScrollTrigger);
       let screen = gsap.matchMedia();
-
-      screen.add("(min-width: 1280px) and (max-width: 1536px)", () => {
+// =============== MIN 1440PX TO MAX 1536PX =================
+screen.add("(min-width: 1440px) and (max-width: 1920px)", () => {
         console.log("1280px breakpoint reached");
         const slider = gsap.timeline({
           scrollTrigger: {
@@ -161,7 +165,7 @@
             markers: true,
           },
         });
-        slider.fromTo("#slide", { translateX: "0%" }, { translateX: "-295%" });
+        slider.fromTo("#slide", { translateX: "0", }, { translateX: "-326%", });
         slider.fromTo(
           "#line",
           { width: "0" },
@@ -187,7 +191,47 @@
           0.35
         );
       });
-
+// =============== MIN 1280PX TO MAX 1429.98PX ==============
+      screen.add("(min-width: 1280px) and (max-width: 1439.98px)", () => {
+        console.log("1280px breakpoint reached");
+        const slider = gsap.timeline({
+          scrollTrigger: {
+            trigger: "#slider",
+            pin: true,
+            scrub: 2,
+            start: "0% 15%",
+            end: "bottom bottom",
+            pinSpacing: false,
+            markers: true,
+          },
+        });
+        slider.fromTo("#slide", { translateX: "0" }, { translateX: "-326%" });
+        slider.fromTo(
+          "#line",
+          { width: "0" },
+          { width: "100%", duration: 0.5 },
+          0
+        );
+        slider.fromTo(
+          ".step_2",
+          { boxShadow: "0px 0px 0 0 #f87171 inset" },
+          { boxShadow: "150px 0px 0 0 #f87171 inset", duration: "0.06" },
+          0.085
+        );
+        slider.fromTo(
+          ".step_3",
+          { boxShadow: "0px 0px 0 0 black inset" },
+          { boxShadow: "150px 0px 0 0 black inset", duration: "0.06" },
+          0.19
+        );
+        slider.fromTo(
+          ".step_4",
+          { boxShadow: "0px 0px 0 0 #fb923c inset" },
+          { boxShadow: "150px 0px 0 0 orange inset", duration: "0.06" },
+          0.35
+        );
+      });
+// =============== MIN 1024PX TO MAX 1279.98PX ==============
       screen.add("(min-width: 1024px) and (max-width: 1279.98px)", () => {
         console.log("1024px breakpoint reached");
         const slider = gsap.timeline({
@@ -201,7 +245,7 @@
             markers: true,
           },
         });
-        slider.fromTo("#slide", { translateX: "0%" }, { translateX: "-332%" });
+        slider.fromTo("#slide", { translateX: "0%" }, { translateX: "-329%" });
         slider.fromTo(
           "#line",
           { width: "0" },
@@ -227,7 +271,7 @@
           0.34
         );
       });
-
+// =============== MIN 768PX TO MAX 1023.98PX ===============
       screen.add("(min-width: 768px) and (max-width: 1023.98px)", () => {
         console.log("768px breakpoint reached");
         const slider = gsap.timeline({
@@ -241,7 +285,7 @@
             markers: true,
           },
         });
-        slider.fromTo("#slide", { translateX: "0%" }, { translateX: "-323%" });
+        slider.fromTo("#slide", { translateX: "0%" }, { translateX: "-339%" });
         slider.fromTo(
           "#line",
           { width: "0" },
@@ -267,7 +311,7 @@
           0.32
         );
       });
-
+// =============== MIN 640PX TO MAX 767.98PX ================
       screen.add("(min-width: 640px) and (max-width: 767.98px)", () => {
         console.log("640px breakpoint reached");
         const slider = gsap.timeline({
@@ -281,7 +325,7 @@
             markers: true,
           },
         });
-        slider.fromTo("#slide", { translateX: "0%" }, { translateX: "-271%" });
+        slider.fromTo("#slide", { translateX: "0%" }, { translateX: "-311.5%" });
         slider.fromTo(
           "#line",
           { width: "0" },
@@ -307,30 +351,31 @@
           0.35
         );
       });
-      screen.add("(min-width: 320px) and (max-width: 639.98px)", () => {
+// =============== MIN 375PX TO MAX 639.98PX ================
+      screen.add("(min-width: 375px) and (max-width: 639.98px)", () => {
         const slider = gsap.timeline({
           scrollTrigger: {
             trigger: "#slider",
             pin: true,
             scrub: 2,
             start: "0% 15%",
-            end: "+=1200% bottom",
+            end: "+=600% bottom",
             pinSpacing: false,
             markers: true,
           },
         });
-        slider.fromTo("#slide", { translateY: "0%" }, { translateY: "-315%" });
+        slider.fromTo("#slide", { translateY: "0%" }, { translateY: "-653%" });
         slider.fromTo(
           "#line",
           { height: "0" },
-          { height: "90%", duration: 0.5 },
+          { height: "90%", duration: 0.4 },
           0
         );
         slider.fromTo(
           ".step_2",
           { boxShadow: "0px 0px 0 0 #f87171 inset" },
           { boxShadow: "0 150px 0 0 #f87171 inset", duration: "0.06" },
-          0.089
+          0.075
         );
         slider.fromTo(
           ".step_3",
