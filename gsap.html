@@ -90,7 +90,9 @@
       <div
         class="rounded-xl relative md:p-6 p-3 border-solid border-2 border-blac overflow-hidden w-full"
       >
-        <div class="relative md:block flex flex-col md:gap-6 gap-4">
+        <div
+          class="relative md:block flex flex-col md:gap-6 gap-4 overflow-hidden"
+        >
           <!-- ========= CARD ONE ========== -->
           <div
             class="bg-blue-500 lg:max-w-[800px] md:max-w-[550px] mx-auto card_scroll_one w-full border-2 md:p-6 p-4 border-solid rounded-xl border-black flex md:flex-row flex-col justify-between md:gap-6 gap-4 items-center hover:shadow-xl duration-300"
@@ -115,7 +117,7 @@
           </div>
           <!-- ========= CARD TWO ========== -->
           <div
-            class="card_scroll_two lg:max-w-[800px] md:max-w-[550px] w-full bg-red-500 md:absolute top-0 border-2 md:p-6 p-4 border-solid rounded-xl border-black flex md:flex-row flex-col justify-between md:gap-6 gap-4 items-center hover:shadow-xl duration-300"
+            class="absolute card_scroll_two lg:max-w-[800px] md:max-w-[550px] w-full bg-red-500 md:absolute top-0 border-2 md:p-6 p-4 border-solid rounded-xl border-black flex md:flex-row flex-col justify-between md:gap-6 gap-4 items-center hover:shadow-xl duration-300"
           >
             <img
               class="lg:max-w-[300px] md:max-w-[200px] w-full rounded-md md:aspect-[5/5] aspect-video object-cover"
@@ -137,7 +139,7 @@
           </div>
           <!-- ========= CARD THREE ========== -->
           <div
-            class="card_scroll_three lg:max-w-[800px] md:max-w-[550px] w-full bg-green-500 md:absolute top-0 border-2 md:p-6 p-4 border-solid rounded-xl border-black flex md:flex-row flex-col justify-between md:gap-6 gap-4 items-center hover:shadow-xl duration-300"
+            class="absolute card_scroll_three lg:max-w-[800px] md:max-w-[550px] w-full bg-green-500 md:absolute top-0 border-2 md:p-6 p-4 border-solid rounded-xl border-black flex md:flex-row flex-col justify-between md:gap-6 gap-4 items-center hover:shadow-xl duration-300"
           >
             <img
               class="lg:max-w-[300px] md:max-w-[200px] w-full rounded-md md:aspect-[5/5] aspect-video object-cover"
@@ -159,7 +161,7 @@
           </div>
           <!-- ========= CARD FOUR ========== -->
           <div
-            class="card_scroll_four lg:max-w-[800px] md:max-w-[550px] w-full bg-orange-500 md:absolute top-0 border-2 md:p-6 p-4 border-solid rounded-xl border-black flex md:flex-row flex-col justify-between md:gap-6 gap-4 items-center hover:shadow-xl duration-300"
+            class="absolute card_scroll_four lg:max-w-[800px] md:max-w-[550px] w-full bg-orange-500 md:absolute top-0 border-2 md:p-6 p-4 border-solid rounded-xl border-black flex md:flex-row flex-col justify-between md:gap-6 gap-4 items-center hover:shadow-xl duration-300"
           >
             <img
               class="lg:max-w-[300px] md:max-w-[200px] w-full rounded-md md:aspect-[5/5] aspect-video object-cover"
@@ -181,10 +183,10 @@
           </div>
           <!-- ========= CARD FIVE ========== -->
           <div
-            class="card_scroll_five lg:max-w-[800px] md:max-w-[550px] w-full bg-yellow-500 md:absolute top-0 border-2 md:p-6 p-4 border-solid rounded-xl border-black flex md:flex-row flex-col justify-between md:gap-6 gap-4 items-center hover:shadow-xl duration-300"
+            class="absolute card_scroll_five lg:max-w-[800px] md:max-w-[550px] w-full bg-yellow-500 md:absolute top-0 border-2 md:p-6 p-4 border-solid rounded-xl border-black flex md:flex-row flex-col justify-between md:gap-6 gap-4 items-center hover:shadow-xl duration-300"
           >
             <img
-              class="lg:max-w-[300px] md:max-w-[200px]  w-full rounded-md md:aspect-[5/5] aspect-video object-cover"
+              class="lg:max-w-[300px] md:max-w-[200px] w-full rounded-md md:aspect-[5/5] aspect-video object-cover"
               src="/assets/images/travel-to-the-beautiful-colorful-majestic-waterfall-in-national-park-forest-during-autumn-soft-water-of-the-stream-in-the-natural-park-photo.jpg"
               alt="nature"
             />
@@ -217,6 +219,7 @@
         </div>
       </div>
     </div>
+
     <div class="h-screen"></div>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
@@ -224,7 +227,7 @@
     <script>
       gsap.registerPlugin(ScrollTrigger);
       let screen = gsap.matchMedia();
-      // =================== MIN 1140PX TO MAX 1920PX =====================
+      // =================== MIN 1140PX TO MAX 1920PX ===================
       screen.add("(min-width: 1140px) and (max-width: 1920px)", () => {
         const scroll = gsap.timeline({
           scrollTrigger: {
@@ -326,7 +329,7 @@
             width: "100%",
           });
       });
-      // ============== MIN 1024PX TO MAX 1139.98PX =================
+      // ============== MIN 1024PX TO MAX 1139.98PX =====================
       screen.add("(min-width: 1024px) and (max-width: 1139.98px)", () => {
         const scroll = gsap.timeline({
           scrollTrigger: {
@@ -455,7 +458,8 @@
               scale: ".9",
               zIndex: 10,
               x: "-8%",
-            },1
+            },
+            1
           )
           .to(".roadmap_line", {
             width: "0%",
@@ -471,7 +475,8 @@
               zIndex: 20,
               scale: ".92",
               x: "-16%",
-            },2
+            },
+            2
           )
           .to(".roadmap_line", {
             width: "25%",
@@ -487,7 +492,8 @@
               zIndex: 30,
               scale: ".94",
               x: "-12%",
-            },3
+            },
+            3
           )
           .to(".roadmap_line", {
             width: "50%",
@@ -503,7 +509,8 @@
               zIndex: 40,
               scale: ".96",
               x: "-8%",
-            },4
+            },
+            4
           )
           .to(".roadmap_line", {
             width: "75%",
@@ -519,12 +526,74 @@
               zIndex: 50,
               scale: ".98",
               x: "-4%",
-            },5
+            },
+            5
           )
           .to(".roadmap_line", {
             width: "100%",
           });
-      
+      });
+      //  ===================== MIN 640PX TO MAX 767.98PX ===================
+      screen.add("(min-width: 320px) and (max-width: 767.98px)", () => {
+        const scroll = gsap.timeline({
+          scrollTrigger: {
+            trigger: "#scroll",
+            pin: true,
+            scrub: 1,
+            start: "top 13%",
+            end: "115% top",
+            markers: true,
+          },
+        });
+        scroll
+          .fromTo(
+            ".card_scroll_two",
+            {
+              top: "100%",
+              // opacity: 0,
+            },
+            {
+              top: "0",
+              // opacity: 1,
+            },
+            2
+          )
+          .fromTo(
+            ".card_scroll_three",
+            {
+              top: "100%",
+              // opacity: 0,
+            },
+            {
+              top: "0",
+              // opacity: 1,
+            },
+            3
+          )
+          .fromTo(
+            ".card_scroll_four",
+            {
+              top: "100%",
+              // opacity: 0,
+            },
+            {
+              top: "0",
+              // opacity: 1,
+            },
+            4
+          )
+          .fromTo(
+            ".card_scroll_five",
+            {
+              top: "100%",
+              // opacity: 0,
+            },
+            {
+              top: "0",
+              // opacity: 1,
+            },
+            5
+          );
       });
     </script>
   </body>
